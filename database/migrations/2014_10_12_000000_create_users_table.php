@@ -19,6 +19,32 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            //user profile fields
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('country')->nullable();
+
+            $table->json('settings')->nullable();
+            // will access this field in the future
+            // [
+            //     'settings' => [
+            //         'notifications' => [
+            //             'email' => true,
+            //             'sms' => true,
+            //         ],
+            //         'language' => 'en',
+            //     ],
+            // ];
+
+
+
+            $table->enum('role', ['admin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
         });
