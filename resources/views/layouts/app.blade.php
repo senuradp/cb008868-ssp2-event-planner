@@ -78,6 +78,8 @@
             </div>
         </nav>
 
+        {{-- <h1>{{ resolve('ButtercupEvents')->getUrl() }}</h1> --}}
+
         <main class="py-4">
             @yield('content')
         </main>

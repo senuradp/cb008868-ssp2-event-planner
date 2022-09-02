@@ -18,10 +18,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dev', function () {
-    dd('dev');
+    dd(app('ButtercupEvents'));
+    return view('home');
 });
 
 Auth::routes();
+
+Route::get('/home', function () {
+    return view('home');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

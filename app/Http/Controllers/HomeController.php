@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ButtercupEvents;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(ButtercupEvents $buttercupEvents)
     {
+        // dd($buttercupEvents);
+        resolve('ButtercupEvents')->setUrl('home');
         return view('home');
     }
 }
