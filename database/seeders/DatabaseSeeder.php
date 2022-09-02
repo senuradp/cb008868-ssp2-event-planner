@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
          //create admin user
-         $admin = \App\Models\Auth\User::create([
+         \App\Models\Auth\User::create([
             'name' => 'Administrator',
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         //create user
-        $admin = \App\Models\Auth\User::create([
+        \App\Models\Auth\User::create([
             'name' => 'Site User',
             'email' => 'user@user.com',
             'email_verified_at' => now(),
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
         ]);
 
-        \App\Models\Auth\User::factory(10)->create();
+        // \App\Models\Auth\User::factory(10)->create();
 
     }
 }

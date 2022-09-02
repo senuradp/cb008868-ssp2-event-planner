@@ -2,16 +2,15 @@
 
 namespace App\Models\Auth;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use  Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
-    //soft delete will help to delete users
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
@@ -26,12 +25,14 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'phone',
+        'nic',
         'address',
         'city',
         'state',
         'zip',
         'country',
-        'role', //admin , user
+        'settings',
+        'role', // 'admin', 'user', 'manager'
     ];
 
     /**
@@ -42,7 +43,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'nic'
+        'nic',
     ];
 
     /**
