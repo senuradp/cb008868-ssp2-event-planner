@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
 
         //34:50
         // git commit -m "Laravel gate created to validate the user type from the templateand added the validation to the admin dropdown"
+        // create admin user gate
         Gate::define('accessAdministration', function(User $user){
             // dd($user);
             return $user->role === 'admin';
