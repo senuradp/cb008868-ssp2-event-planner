@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Gate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dev', function () {
-    dd(app('ButtercupEvents'));
+    dd(Gate::allows('admin'));
+    dd(resolve('ButtercupEvents'));
     return view('home');
 });
 

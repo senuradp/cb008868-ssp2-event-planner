@@ -35,52 +35,56 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Administration
-                            </a>
+                    @auth
+                        @can('accessAdministration')
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Administration
+                                    </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                                <small class="d-block ps-2">Home</small>
-                                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
-                                    Dashboard
-                                </a>
+                                        <small class="d-block ps-2">Home</small>
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                            Dashboard
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <small class="d-block ps-2">Authentication</small>
-                                <a class="dropdown-item" href="{{ route('users.index') }}">
-                                    Users
-                                </a>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Authentication</small>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">
+                                            Users
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <small class="d-block ps-2">Content</small>
-                                <a class="dropdown-item" href="">
-                                    Pages
-                                </a>
-                                <a class="dropdown-item" href="">
-                                    Categories
-                                </a>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Content</small>
+                                        <a class="dropdown-item" href="">
+                                            Pages
+                                        </a>
+                                        <a class="dropdown-item" href="">
+                                            Categories
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <small class="d-block ps-2">Bookings</small>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Bookings</small>
 
-                                <a class="dropdown-item" href="">
-                                    Bookings & Reservations
-                                </a>
+                                        <a class="dropdown-item" href="">
+                                            Bookings & Reservations
+                                        </a>
 
-                                <div class="dropdown-divider"></div>
-                                <small class="d-block ps-2">Event</small>
+                                        <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Event</small>
 
-                                <a class="dropdown-item" href="">
-                                    Events
-                                </a>
+                                        <a class="dropdown-item" href="">
+                                            Events
+                                        </a>
 
-                            </div>
+                                    </div>
 
-                        </li>
-                    </ul>
+                                </li>
+                            </ul>
+                        @endcan
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
