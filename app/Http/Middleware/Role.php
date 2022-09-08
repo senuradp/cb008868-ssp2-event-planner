@@ -16,6 +16,7 @@ class Role
      */
     public function handle(Request $request, Closure $next, ?string $role = null)
     {
+
         if ($role === null) {
             throw new \InvalidArgumentException('The $role argument is required.');
         }
