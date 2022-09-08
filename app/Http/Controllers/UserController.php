@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Auth\User;
 
 class UserController extends Controller
 {
@@ -18,7 +19,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = (new User())
+            ->newQuery()
+            ->paginate(1);
+
+        return view('admin.users.index',[
+            'users' => $users
+        ]);
     }
 
     /**
@@ -61,7 +68,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.users.form');
     }
 
     /**
@@ -84,6 +91,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        (new User())->newQuery()->find($id)->delete();
+        return redirect()->route('users.index');
     }
 }
