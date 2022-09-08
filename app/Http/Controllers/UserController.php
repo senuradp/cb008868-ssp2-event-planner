@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->authorize('accessAdministration');
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.form');
     }
 
     /**
@@ -45,7 +50,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.users.show');
     }
 
     /**
