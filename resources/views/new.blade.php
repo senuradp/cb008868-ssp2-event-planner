@@ -35,7 +35,7 @@
         </div>
     </section>
 
-
+    <!--Popular Section-->
     <section class="popular-events">
         <div class="container">
             <div class="section-wraper row d-flex align-items-center">
@@ -238,8 +238,8 @@
         </div>
     </section>
 
-
-    <section class="news-events">
+    <!--Fututre Events Section-->
+    {{-- <section class="news-events">
         <div class="container">
             <div class="section-wraper row d-flex align-items-center">
                 <div class="col-md-6 section-header mb-0">
@@ -623,10 +623,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
-    <section class="speakers speaker-section">
+    {{-- <section class="speakers speaker-section">
         <div class="container">
             <div class="section-wraper row d-flex align-items-center">
                 <div class="col-md-6 section-header mb-0">
@@ -788,9 +788,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-
+    <!--Review Section-->
     <section class="testimonial-section reviews">
         <div class="container">
             <div class="section-wraper row d-flex align-items-center">
@@ -945,8 +945,8 @@
         </div>
     </section>
 
-
-    <section class="blog-wrapper">
+    <!--News Section-->
+    {{-- <section class="blog-wrapper">
         <div class="container">
 
             <div class="section-wraper row d-flex align-items-center">
@@ -1022,5 +1022,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

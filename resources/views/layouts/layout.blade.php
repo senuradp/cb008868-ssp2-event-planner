@@ -145,9 +145,9 @@
                             <a href="/">Home</a>
                         </li>
                         <li class="has-submenu ">
-                            <a href="#">Speakers <i class="fas fa-chevron-down"></i></a>
+                            <a href="#">Events <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
-                                <li class=""><a href="speaker-dashboard.html">speaker Dashboard</a></li>
+                                <li class=""><a href="speaker-dashboard.html">Speaker Dashboard</a></li>
                                 <li class=""><a href="/events">Events</a></li>
                                 <li class=""><a href="schedule-timings.html">Schedule Timing</a></li>
                                 <li class=""><a href="my-customers.html">customers List</a></li>
@@ -399,7 +399,7 @@
                                     <div class="copyright-menu">
                                         <ul class="policy-menu">
                                             <li>
-                                                <p class="mb-0">&copy; 2021 All Rights Reserved</p>
+                                                <p class="mb-0">&copy; {{ date('Y') }} All Rights Reserved</p>
                                             </li>
                                         </ul>
                                     </div>
