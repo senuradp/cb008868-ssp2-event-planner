@@ -22,10 +22,10 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->created_at }}</td>
                             <td>
-                                <a href="{{  route('users.show',$user->id) }}" class="btn btn-success">View</a>
-                                <a href="{{  route('users.edit',$user->id) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{  route('admin.users.show',$user->id) }}" class="btn btn-success">View</a>
+                                <a href="{{  route('admin.users.edit',$user->id) }}" class="btn btn-primary">Edit</a>
                                 {{-- <a href="{{  route('users.destroy',$user->id) }}" class="btn btn-danger">Delete</a> --}}
-                                <form id="model-delete-{{ $user->id }}" action="{{ route('users.destroy',$user->id) }}" method="POST" class="d-inline">
+                                <form id="model-delete-{{ $user->id }}" action="{{ route('admin.users.destroy',$user->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button"

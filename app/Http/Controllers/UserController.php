@@ -92,6 +92,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         (new User())->newQuery()->find($id)->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 }
