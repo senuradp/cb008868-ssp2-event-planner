@@ -35,8 +35,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @auth
-                        @can('accessAdministration')
+                    @auth('admin')
+                        {{-- @can('accessAdministration') --}}
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -52,7 +52,7 @@
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Authentication</small>
-                                        <a class="dropdown-item" href="{{ route('users.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                             Users
                                         </a>
 
@@ -83,7 +83,7 @@
 
                                 </li>
                             </ul>
-                        @endcan
+                        {{-- @endcan --}}
                     @endauth
 
                     <!-- Right Side Of Navbar -->

@@ -26,6 +26,7 @@ class HomeController extends Controller
     {
         // dd($buttercupEvents);
         resolve('ButtercupEvents')->setUrl('home');
-        return view('home');
+        // return view('home');
+        return view('new');
     }
 }
