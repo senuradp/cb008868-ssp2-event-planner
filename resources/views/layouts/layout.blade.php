@@ -141,10 +141,10 @@
                         </a>
                     </div>
                     <ul class="main-nav">
-                        <li class="active">
+                        <li class="{{ Request::segment(1) == '' ? 'active' : '' }}">
                             <a href="/">Home</a>
                         </li>
-                        <li class="has-submenu ">
+                        <li class="has-submenu {{ Request::segment(1) == 'events' ? 'active' : '' }}">
                             <a href="#">Events <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
                                 <li class=""><a href="speaker-dashboard.html">Speaker Dashboard</a></li>
@@ -159,7 +159,7 @@
                                 <li class=""><a href="speaker-register.html">speaker Register</a></li>
                             </ul>
                         </li>
-                        <li class="has-submenu ">
+                        <li class="has-submenu {{ Request::segment(1) == '' ? 'active' : '' }}">
                             <a href="#">Customers <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
                                 <li class="has-submenu ">
@@ -181,7 +181,7 @@
                                 <li class=""><a href="change-password.html">Change Password</a></li>
                             </ul>
                         </li>
-                        <li class="has-submenu ">
+                        <li class="has-submenu {{ Request::segment(1) == '' ? 'active' : '' }}">
                             <a href="#">pages <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
                                 <li class=""><a href="voice-call.html">Voice Call</a></li>
@@ -203,7 +203,7 @@
                                 <li class=""><a href="forgot-password.html">Forgot Password</a></li>
                             </ul>
                         </li>
-                        <li class="has-submenu ">
+                        <li class="has-submenu {{ Request::segment(1) == '' ? 'active' : '' }}">
                             <a href="#">Blog <i class="fas fa-chevron-down"></i></a>
                             <ul class="submenu">
                                 <li class=""><a href="blog-list.html">Blog List</a></li>
@@ -235,7 +235,7 @@
                                     </a> --}}
 
                                 {{-- <div class="nav-link" aria-labelledby="navbarDropdown"> --}}
-                                <a class="nav-link header-login" href="{{ route('logout') }}"
+                                {{-- <a class="nav-link header-login" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -243,7 +243,7 @@
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
-                                </form>
+                                </form> --}}
                                 {{-- </div> --}}
                                 {{-- </li> --}}
                             @endguest
@@ -253,16 +253,56 @@
                             </li> --}}
                     </ul>
                 </div>
+
                 <ul class="nav header-navbar-rht">
                     <li class="nav-item contact-item">
                         <a href="javascript:void(0);" class="header-contact-img">
                             <img src="/assets/img/mic-icon.png" alt="mic">
                         </a>
-                        {{-- <a href="javascript:void(0);" class="header-contact-detail">
+                    </li>
+                </ul>
+
+                <ul class="main-nav">
+
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="has-submenu">
+                            <a style="color:white">
+                                {{ Auth::user()->name }}
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li class=""><a href="#">Profile</a></li>
+                                <li class="">
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endguest
+                    {{-- <a href="javascript:void(0);" class="header-contact-detail">
                                 <p class="contact-header">Your Bookings</p>
                                 <p class="contact-info-header"> $300</p>
                             </a> --}}
-                    </li>
+                    {{-- </li> --}}
 
                 </ul>
             </nav>
