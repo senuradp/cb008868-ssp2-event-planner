@@ -122,7 +122,7 @@
                                         <div class="col-md-6 col-lg-4">
                                             <div class="profile-widget">
                                                 <div class="doc-img">
-                                                    <a href="event-details.html">
+                                                    <a href="/event-details">
                                                         <img class="img-fluid" alt="User Image"
                                                             src="assets/img/events/event-06.jpg">
                                                     </a>
@@ -133,7 +133,7 @@
                                                 <div class="pro-content">
                                                     <h3 class="title">
                                                         <span>Seminar</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
+                                                        <a href="/event-details">Marketing Matters!</a>
                                                     </h3>
                                                     <p class="add-cont">8 Northumberland Ave, Westminster,</p>
                                                     <div class="profile-info d-flex mb-0">
@@ -148,151 +148,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-05.jpg">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="fav-btn" title="Inactive">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>workshop</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">8 Northumberland Ave, Westminster,</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="#" class="profile-img">
-                                                            <img src="assets/img/profile/profile-05.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">mr. Fuad Lyles</span>
-                                                            <span class="profile-pro">Former ceo</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-01.jpg">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="fav-btn" title="Inactive">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>workshop</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">8 Northumberland Ave, Westminster,</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-01.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">ms. Annie</span>
-                                                            <span class="profile-pro">ceo - turbofloid</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-04.jpg">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="fav-btn" title="Inactive">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>DIGITAL EVENTS</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">8 Northumberland Ave, Westminster,</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-04.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">mr. Adar Li</span>
-                                                            <span class="profile-pro">Managing Director</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-03.jpg">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="fav-btn" title="Inactive">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>TECH, Digital</span>
-                                                        <a href="event-details.html">Tech Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">8 Northumberland Ave, Westminster,</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-03.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">ms. Tilli Devlin</span>
-                                                            <span class="profile-pro">Chief Executive</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-07.jpg">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="fav-btn" title="Inactive">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>Party</span>
-                                                        <a href="event-details.html">New Year Event!</a>
-                                                    </h3>
-                                                    <p class="add-cont">North Carolina, United States</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-07.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">ms. Meirav Gatlin</span>
-                                                            <span class="profile-pro">Chief Executive</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
@@ -302,7 +158,7 @@
                                         <div class="col-md-6 col-lg-4">
                                             <div class="profile-widget">
                                                 <div class="doc-img">
-                                                    <a href="event-details.html">
+                                                    <a href="/event-details">
                                                         <img class="img-fluid" alt="User Image"
                                                             src="assets/img/events/event-02.jpg">
                                                     </a>
@@ -310,7 +166,7 @@
                                                 <div class="pro-content">
                                                     <h3 class="title">
                                                         <span>CULTURAL EVENTS</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
+                                                        <a href="/event-details">Marketing Matters!</a>
                                                     </h3>
                                                     <p class="add-cont">8 Northumberland Ave, Westminster,</p>
                                                     <div class="profile-info d-flex mb-0">
@@ -319,84 +175,6 @@
                                                         </a>
                                                         <a href="speaker-profile.html">
                                                             <span class="profile-name">ms. Caia Earle</span>
-                                                            <span class="profile-pro">Chairmam</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-01.jpg">
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>workshop</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">8 Northumberland Ave, Westminster,</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-01.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">ms. Annie</span>
-                                                            <span class="profile-pro">ceo - BP</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-09.jpg">
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>CULTURAL EVENTS</span>
-                                                        <a href="event-details.html">Marketing Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">Indiana, United States</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-09.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">mr. Adnan Lam</span>
-                                                            <span class="profile-pro">Chairmam</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="event-details.html">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-08.jpg">
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>Sangeet EVENTS</span>
-                                                        <a href="event-details.html">Wedding Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">Alabama, USA</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-08.jpg" alt="">
-                                                        </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">mr. Flann Berlin</span>
                                                             <span class="profile-pro">Chairmam</span>
                                                         </a>
                                                     </div>

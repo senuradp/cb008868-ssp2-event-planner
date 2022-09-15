@@ -127,7 +127,7 @@
                             <span></span>
                         </span>
                     </a>
-                    <a href="index-2.html" class="navbar-brand logo">
+                    <a href="/home" class="navbar-brand logo">
                         <img src="/assets/img/logo.png" class="img-fluid" alt="Logo">
                     </a>
                 </div>
@@ -266,15 +266,9 @@
 
                     @guest
                         @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
                         @endif
 
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
                         @endif
                     @else
                         <li class="has-submenu">

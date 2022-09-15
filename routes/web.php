@@ -36,5 +36,9 @@ Route::get('/events', function () {
     return view('events');
 });
 
+Route::get('/event-details', function () {
+    return view('event-details');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
