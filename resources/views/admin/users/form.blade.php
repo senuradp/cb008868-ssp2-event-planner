@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-8 bg-white p-4">
-            <form method="POST" action="{{ route('admin.users.update', $user->id) }}">
+            <form method="POST" action="{{ $user->id ? route('admin.users.update', $user->id) : route('admin.users.store') }}">
 
                 {{-- @if ($errors->any())
                     <div class="alert alert-danger">
@@ -17,11 +17,13 @@
                     </div>
                 @endif --}}
 
-                @method('PUT')
+                @if ($user->id)
+                    @method('PUT')
+                @endif
 
                 @csrf
 
-                <h5> Update Details</h5>
+                <h5> User Details</h5>
 
                 <hr>
                 <br>

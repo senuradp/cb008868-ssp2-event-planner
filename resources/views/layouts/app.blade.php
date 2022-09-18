@@ -131,6 +131,25 @@
         {{-- <h1>{{ resolve('ButtercupEvents')->getUrl() }}</h1> --}}
 
         <main class="py-4">
+
+            <div class="row col-md-9 m-auto">
+                <div class="col">
+
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+
             @yield('content')
         </main>
     </div>
