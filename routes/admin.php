@@ -15,7 +15,10 @@ Route::group([
     // 'middleware' => ['auth', 'admin']
 ], function () {
     //Dashboard
-    Route::get('dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [App\Http\Controllers\AdminController::class, 'home'])->name('dashboard');
+
+    //Admins
+    Route::resource('admins', App\Http\Controllers\AdminController::class);
 
     //Users
     Route::resource('users', App\Http\Controllers\UserController::class);
