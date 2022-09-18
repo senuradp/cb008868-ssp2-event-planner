@@ -137,7 +137,7 @@ class UserController extends Controller
 
         // Update the user
         $user->update($validated);
-        return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
+        return redirect()->route('admin.users.index')->with('success', 'User '. $user->first_name .' updated successfully');
 
     }
 
