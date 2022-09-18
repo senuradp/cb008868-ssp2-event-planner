@@ -66,9 +66,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        return view('admin.users.form');
+        return view('admin.users.form', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -78,9 +80,27 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $id)
     {
-        //
+        $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|max:255",
+            "password" => "nullable",
+            "password_confirmation" => "nullable",
+            "first_name" => "required|max:255",
+            "last_name" => "required|max:255",
+            "phone" => "required|max:12",
+            "nic" => "required|max:12",
+            "address" => "required",
+            "city" => "required",
+            "state" => "required",
+            "zip" => "required",
+            "country" => "required",
+            "role" => "required",
+        ]);
+
+
+
     }
 
     /**
@@ -91,6 +111,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        // check if the user id is the id of the current logged in user and prevent deletion of the current user
+
+        if($id == auth()->id()){
+            return redirect()->route('admin.users.index')->with('error', 'You cannot delete yourself');
+        }
+
         (new User())->newQuery()->find($id)->delete();
         return redirect()->route('admin.users.index');
     }
