@@ -254,13 +254,13 @@
                     </ul>
                 </div>
 
-                <ul class="nav header-navbar-rht">
+                {{-- <ul class="nav header-navbar-rht">
                     <li class="nav-item contact-item">
                         <a href="javascript:void(0);" class="header-contact-img">
                             <img src="/assets/img/mic-icon.png" alt="mic">
                         </a>
                     </li>
-                </ul>
+                </ul> --}}
 
                 <ul class="main-nav">
 
