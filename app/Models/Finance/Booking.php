@@ -11,10 +11,11 @@ class Booking extends Model
     use HasFactory, SoftDeletes;
 
     protected $attributes =[
-
+        'status' => 0,
     ];
 
     protected $fillable = [
+        'status',
     ];
 
     protected $hidden = [

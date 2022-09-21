@@ -11,10 +11,13 @@ class Page extends Model
     use HasFactory, SoftDeletes;
 
     protected $attributes =[
-
+        'sort_order' => 0,
+        'status' => 0,
     ];
 
     protected $fillable = [
+        'sort_order',
+        'status',
     ];
 
     protected $hidden = [
