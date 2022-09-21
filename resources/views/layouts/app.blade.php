@@ -52,7 +52,7 @@
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Authentication</small>
-                                        <a class="dropdown-item" href="{{ route('admin.admins.index') }}">
+                                        <a class="dropdown-item" href="{{ route('admin.administrators.index') }}">
                                             Admins
                                         </a>
                                         <a class="dropdown-item" href="{{ route('admin.users.index') }}">

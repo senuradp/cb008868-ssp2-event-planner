@@ -32,7 +32,6 @@ class Administrator extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'nic',
     ];
 
     /**
@@ -42,9 +41,6 @@ class Administrator extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'settings' => 'array',
-        'nic' => 'encrypted',
-        'address' => 'encrypted',
         'phone' => 'encrypted',
     ];
 

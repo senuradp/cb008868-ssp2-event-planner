@@ -18,7 +18,7 @@ Route::group([
     Route::get('dashboard', [App\Http\Controllers\AdminController::class, 'home'])->name('dashboard');
 
     //Admins
-    Route::resource('admins', App\Http\Controllers\AdminController::class);
+    Route::resource('administrators', App\Http\Controllers\AdminController::class);
 
     //Users
     Route::resource('users', App\Http\Controllers\UserController::class);

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Auth\Administrator as Admin;
+use App\Models\Auth\Administrator;
+use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
 {
@@ -18,11 +19,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = (new Admin())
+        $admins = (new Administrator())
             ->newQuery()
             ->paginate(1);
 
-        return view('admin.admins.index',[
+        return view('admin.administrators.index',[
             'admins' => $admins
         ]);
     }
@@ -34,7 +35,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.admins.form');
+        return view('admin.administrators.form', [
+            'admin' => new Administrator()
+        ]);
     }
 
     /**
@@ -45,7 +48,22 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|max:255",
+            "password" => ['required', 'confirmed', Password::min(8)],
+        ]);
+
+        // check if the password is not emoty and if not then hash it
+        if(!is_null($validated['password'])){
+            $validated['password'] = bcrypt($validated['password']);
+        }else{
+            unset($validated['password']);
+        }
+
+        $admin = (new Administrator())->create($validated);
+
+        return redirect()->route('admin.administrators.index')->with('success', 'Admin '. $admin->name .' created successfully.');
     }
 
     /**
@@ -56,7 +74,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        return view('admin.admins.show');
+        return view('admin.administrators.show');
     }
 
     /**
@@ -65,9 +83,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Administrator $administrator)
     {
-        return view('admin.admins.form');
+        // dd($administrator);
+        return view('admin.administrators.form', [
+            'administrator' => $administrator
+        ]);
     }
 
     /**
@@ -77,9 +98,24 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Administrator $admin)
     {
-        //
+        $validated = $request->validate([
+            "name" => "required|max:255",
+            "email" => "required|max:255",
+            "password" => ['nullable', 'confirmed', Password::min(8)],
+        ]);
+
+        // check if the password is not emoty and if not then hash it
+        if(!is_null($validated['password'])){
+            $validated['password'] = bcrypt($validated['password']);
+        }else{
+            unset($validated['password']);
+        }
+
+        $admin->update($validated);
+
+        return redirect()->route('admin.administrators.index')->with('success', 'Admin '. $admin->name .' updated successfully.');
     }
 
     /**
@@ -91,15 +127,15 @@ class AdminController extends Controller
     public function destroy($id)
     {
 
-        // check if the user id is the id of the current logged in user and prevent deletion of the current user
+        // check if the admin id is the id of the current logged in admin and prevent deletion of the current admin
 
         if($id == auth()->id()){
-            return redirect()->route('admin.users.index')->with('error', 'You cannot delete yourself');
+            return redirect()->route('admin.administrators.index')->with('error', 'You cannot delete yourself');
         }
 
 
-        (new Admin())->newQuery()->find($id)->delete();
-        return redirect()->route('admin.admins.index');
+        (new Administrator())->newQuery()->find($id)->delete();
+        return redirect()->route('admin.administrators.index');
     }
 
 
