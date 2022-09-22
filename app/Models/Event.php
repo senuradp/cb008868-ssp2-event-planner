@@ -12,7 +12,7 @@ class Event extends Model
 
     protected $attributes =[
         'sort_order' => 0,
-        'status' => 0,
+        'status' => 1,
     ];
 
     protected $fillable = [
