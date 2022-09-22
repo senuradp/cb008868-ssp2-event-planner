@@ -16,6 +16,10 @@ class Category extends Model
     ];
 
     protected $fillable = [
+        'title',
+        'url',
+        'summary',
+        'content',
         'sort_order',
         'status',
     ];
