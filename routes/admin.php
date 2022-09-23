@@ -30,7 +30,7 @@ Route::group([
     Route::resource('bookings', App\Http\Controllers\BookingController::class);
 
     //Packages
-    Route::resource('packages', App\Http\Controllers\PackagesController::class);
+    Route::resource('packages', App\Http\Controllers\PackageController::class);
 
     //Categories
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
