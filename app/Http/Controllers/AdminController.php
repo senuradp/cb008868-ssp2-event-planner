@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Http\Request;
 use App\Models\Auth\Administrator;
 use Illuminate\Validation\Rules\Password;
@@ -36,7 +38,7 @@ class AdminController extends Controller
     public function create()
     {
         return view('admin.administrators.form', [
-            'admin' => new Administrator()
+            'administrator' => new Administrator()
         ]);
     }
 
@@ -46,24 +48,23 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAdminRequest $request)
     {
-        $validated = $request->validate([
-            "name" => "required|max:255",
-            "email" => "required|max:255",
-            "password" => ['required', 'confirmed', Password::min(8)],
-        ]);
-
-        // check if the password is not emoty and if not then hash it
-        if(!is_null($validated['password'])){
-            $validated['password'] = bcrypt($validated['password']);
+        // check if the password is not empty and if not then hash it
+         if($request->get('password')){
+            $request->offsetSet('password', bcrypt($request->password));
         }else{
-            unset($validated['password']);
+            $request->offsetUnset('password');
         }
 
-        $admin = (new Administrator())->create($validated);
+        // get the validated data
+        $validated = $request->all();
 
-        return redirect()->route('admin.administrators.index')->with('success', 'Admin '. $admin->name .' created successfully.');
+        $administrator = (new Administrator())->create($validated);
+
+        return redirect()
+            ->route('admin.administrators.index')
+            ->with('success', 'Admin '. $administrator->name .' created successfully.');
     }
 
     /**
@@ -98,24 +99,23 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrator $admin)
+    public function update(UpdateAdminRequest $request, Administrator $administrator)
     {
-        $validated = $request->validate([
-            "name" => "required|max:255",
-            "email" => "required|max:255",
-            "password" => ['nullable', 'confirmed', Password::min(8)],
-        ]);
-
-        // check if the password is not emoty and if not then hash it
-        if(!is_null($validated['password'])){
-            $validated['password'] = bcrypt($validated['password']);
+        // check if the password is not empty and if not then hash it
+        if($request->get('password')){
+            $request->offsetSet('password', bcrypt($request->password));
         }else{
-            unset($validated['password']);
+            $request->offsetUnset('password');
         }
 
-        $admin->update($validated);
+        // get the validated data
+        $validated = $request->all();
 
-        return redirect()->route('admin.administrators.index')->with('success', 'Admin '. $admin->name .' updated successfully.');
+        $administrator->update($validated);
+
+        return redirect()
+            ->route('admin.administrators.index')
+            ->with('success', 'Admin '. $administrator->name .' updated successfully.');
     }
 
     /**

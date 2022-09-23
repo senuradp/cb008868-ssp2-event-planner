@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class StoreAdminRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreAdminRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,9 @@ class StoreAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "required|max:255",
+            "email" => "required|max:255",
+            "password" => ['required', 'confirmed', Password::min(8)],
         ];
     }
 }
