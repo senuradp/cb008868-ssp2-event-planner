@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container ">
+    <div class="row justify-content-center bg-white shadow-lg">
 
-        <div class="col-12 mb-3">
+        <div class="col-12 mb-3 mt-3">
             <a href="{{ route('admin.administrators.create') }}" class="btn btn-primary"> Add Admin </a>
         </div>
 

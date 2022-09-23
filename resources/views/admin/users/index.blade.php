@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center bg-white shadow-lg">
 
-        <div class="col-12 mb-3">
+        <div class="col-12 mb-3 mt-3">
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary"> Add User </a>
         </div>
 
