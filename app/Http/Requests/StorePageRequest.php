@@ -13,7 +13,7 @@ class StorePageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StorePageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_id' => 'nullable',
+            'title' => 'required|string|max:255',
+            'url' => 'required|string|max:255',
+            'summary' => 'nullable',
+            'content' => 'required',
+            'status' => 'nullable:integer',
         ];
     }
 }

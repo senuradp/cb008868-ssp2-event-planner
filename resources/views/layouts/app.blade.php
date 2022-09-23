@@ -62,7 +62,7 @@
 
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Content</small>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ route('admin.pages.index') }}">
                                             Pages
                                         </a>
                                         <a class="dropdown-item" href="{{ route('admin.categories.index') }}">

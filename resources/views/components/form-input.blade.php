@@ -17,7 +17,7 @@
     @if ($type == 'file')
         <div class="col-4">
             {{-- id taken from line var output in file reader script--}}
-            <img src="/storage/{{ $value }}" id="{{ $id }}-img" class="w-100">
+            <img src="{{ $value }}" id="{{ $id }}-img" class="w-100">
         </div>
     @endif
 

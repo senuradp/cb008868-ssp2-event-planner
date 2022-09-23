@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
 
+            //pages belongs to a category and category will have many pages
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
+
             $table->string('title');
             $table->string('url')->unique();
             $table->longText('summary')->nullable();
