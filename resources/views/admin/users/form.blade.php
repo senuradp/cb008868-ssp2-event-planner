@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-12">
                         <x-form-input  id="avatar" name="avatar" label="Profile Image" type="file" help="Please upload a profile image with the resolution of 180px X 180px"
-                        value="{{ $user->avatar }}" />
+                        value="/storage/{{ $user->avatar }}" />
                     </div>
                 </div>
 
