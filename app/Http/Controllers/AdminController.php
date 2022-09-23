@@ -6,6 +6,7 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Http\Request;
 use App\Models\Auth\Administrator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
@@ -60,6 +61,10 @@ class AdminController extends Controller
         // get the validated data
         $validated = $request->all();
 
+        if($request->file('avatar')){
+            $validated['avatar'] = $request->file('avatar')->store('avatars');
+        }
+
         $administrator = (new Administrator())->create($validated);
 
         return redirect()
@@ -101,6 +106,8 @@ class AdminController extends Controller
      */
     public function update(UpdateAdminRequest $request, Administrator $administrator)
     {
+        // dd($request);
+
         // check if the password is not empty and if not then hash it
         if($request->get('password')){
             $request->offsetSet('password', bcrypt($request->password));
@@ -108,8 +115,18 @@ class AdminController extends Controller
             $request->offsetUnset('password');
         }
 
+        // dd($request->all());
+
         // get the validated data
         $validated = $request->all();
+
+        if($request->file('avatar')){
+            // check if the file exists in the duirectory and delete it
+            Storage::delete($administrator->avatar);
+            $validated['avatar'] = $request->file('avatar')->store('avatars');
+        }
+
+        // dd($path);
 
         $administrator->update($validated);
 

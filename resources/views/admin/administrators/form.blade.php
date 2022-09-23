@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 bg-white p-4">
-            <form method="POST" action="{{ $administrator->id ? route('admin.administrators.update', $administrator->id) : route('admin.administrators.store') }}">
+            <form method="POST" action="{{ $administrator->id ? route('admin.administrators.update', $administrator->id) : route('admin.administrators.store') }}" enctype="multipart/form-data">
 
                 {{-- @if ($errors->any())
                     <div class="alert alert-danger">
@@ -26,6 +26,16 @@
 
                 <hr>
                 <br>
+
+                <div class="row">
+                    @if ($administrator->avatar)
+                        <img class="w-25 rounded mb-3" src="/storage/{{ $administrator->avatar }}" alt="Profile Image">
+                    @endif
+                    <div class="col-12">
+                        <x-form-input  id="avatar" name="avatar" label="Profile Image" type="file" help="Please upload a profile image with the resolution of 180px X 180px"
+                        value="" />
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-6">

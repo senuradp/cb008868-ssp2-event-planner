@@ -24,20 +24,17 @@ Route::group([
     Route::resource('users', App\Http\Controllers\UserController::class);
 
     //Pages
-    // Route::resource('pages', App\Http\Controllers\PageController::class);
+    Route::resource('pages', App\Http\Controllers\PageController::class);
 
     //Booking
-    // Route::resource('bookings', App\Http\Controllers\BookingController::class);
+    Route::resource('bookings', App\Http\Controllers\BookingController::class);
 
     //Packages
-    // Route::resource('packages', App\Http\Controllers\PackagesController::class);
-
-    //Promotions
-    // Route::resource('promotions', App\Http\Controllers\PromotionController::class);
+    Route::resource('packages', App\Http\Controllers\PackagesController::class);
 
     //Categories
-    // Route::resource('categories', App\Http\Controllers\CategoryController::class);
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
     //Events
-    // Route::resource('events', App\Http\Controllers\EventController::class);
+    Route::resource('events', App\Http\Controllers\EventController::class);
 });
