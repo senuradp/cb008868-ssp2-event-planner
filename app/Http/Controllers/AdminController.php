@@ -78,9 +78,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Administrator $administrator)
     {
-        return view('admin.administrators.show');
+        return view('admin.administrators.show', compact('administrator'));
     }
 
     /**

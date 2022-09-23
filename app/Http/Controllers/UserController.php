@@ -84,7 +84,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        // pass the user to the view
         return view('admin.users.show', compact('user'));
+
     }
 
     /**
