@@ -31,6 +31,9 @@ return new class extends Migration
             $table->string('zip')->nullable();
             $table->string('country')->nullable();
 
+            // avatar
+            $table->string('avatar')->nullable();
+
             $table->json('settings')->nullable();
             // will access this field in the future
             // [

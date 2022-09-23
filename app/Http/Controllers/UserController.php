@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Auth\User;
 use Illuminate\Validation\Rules\Password;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -62,6 +63,11 @@ class UserController extends Controller
         // get the validated data
         $validated = $request->all();
 
+        // avatar
+        if($request->file('avatar')){
+            $validated['avatar'] = $request->file('avatar')->store('avatars');
+        }
+
         $user = (new User())->create($validated);
 
         return redirect()
@@ -76,9 +82,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        return view('admin.users.show');
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -112,6 +118,15 @@ class UserController extends Controller
 
         // get the validated data
         $validated = $request->all();
+
+        // avatar
+        if($request->file('avatar')){
+            // check if the file exists in the directory and delete it
+            if($user->avatar){
+                Storage::delete($user->avatar);
+            }
+            $validated['avatar'] = $request->file('avatar')->store('avatars');
+        }
 
         // Update the user
         $user->update($validated);

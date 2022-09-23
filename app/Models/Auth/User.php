@@ -31,6 +31,7 @@ class User extends Authenticatable
         'state',
         'zip',
         'country',
+        'avatar',
         'settings',
         'role', // 'admin', 'user', 'manager'
     ];

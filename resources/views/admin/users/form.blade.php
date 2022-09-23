@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-8 bg-white p-4">
-            <form method="POST" action="{{ $user->id ? route('admin.users.update', $user->id) : route('admin.users.store') }}">
+            <form method="POST" action="{{ $user->id ? route('admin.users.update', $user->id) : route('admin.users.store') }}" enctype="multipart/form-data">
 
                 {{-- @if ($errors->any())
                     <div class="alert alert-danger">
@@ -27,6 +27,13 @@
 
                 <hr>
                 <br>
+
+                <div class="row">
+                    <div class="col-12">
+                        <x-form-input  id="avatar" name="avatar" label="Profile Image" type="file" help="Please upload a profile image with the resolution of 180px X 180px"
+                        value="{{ $user->avatar }}" />
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-6">
