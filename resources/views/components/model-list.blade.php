@@ -20,6 +20,31 @@
                         {{-- dynamically access internal varibales in the column in the { }--}}
                         <td>{{ $model->{$column} }}</td>
                     @endforeach
+
+                    {{-- @foreach ($columns as $column)
+                        <td>
+                            @if ($column === 'status')
+                                    @if ($model->{$column})
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-success" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="height: 20px;">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" style="height: 20px;"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    @endif
+                                    @else
+
+                            <td>{{ $model->{$column} }}</td>
+                            @endif
+                        </td>
+
+                    @endforeach --}}
+
                     <td>
 
                         @php
