@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 use App\Models\Auth\User;
 use Illuminate\Validation\Rules\Password;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -47,34 +49,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $validated = $request->validate([
-            "name" => "required|max:255",
-            "email" => "required|max:255",
-            "password" => ['required', 'confirmed', Password::min(8)],
-            "first_name" => "required|max:255",
-            "last_name" => "required|max:255",
-            "phone" => "required|max:12",
-            "nic" => "required|max:12",
-            "address" => "required",
-            "city" => "required",
-            "state" => "required",
-            "zip" => "required",
-            "country" => "required",
-            "role" => "required",
-        ]);
 
-        // check if the password is not emoty and if not then hash it
-        if(!is_null($validated['password'])){
-            $validated['password'] = bcrypt($validated['password']);
+        // check if the password is not empty and if not then hash it
+        if($request->get('password')){
+            $request->offsetSet('password', bcrypt($request->password));
         }else{
-            unset($validated['password']);
+            $request->offsetUnset('password');
         }
+
+        // get the validated data
+        $validated = $request->all();
 
         $user = (new User())->create($validated);
 
-        return redirect()->route('admin.users.index')->with('success', 'User '. $user->first_name .' created successfully.');
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'User '. $user->first_name .' created successfully.');
 
     }
 
@@ -109,35 +101,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // "password" => ['nullable', 'confirmed', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        $validated = $request->validate([
-            "name" => "required|max:255",
-            "email" => "required|max:255",
-            "password" => ['nullable', 'confirmed', Password::min(8)],
-            "first_name" => "required|max:255",
-            "last_name" => "required|max:255",
-            "phone" => "required|max:12",
-            "nic" => "required|max:12",
-            "address" => "required",
-            "city" => "required",
-            "state" => "required",
-            "zip" => "required",
-            "country" => "required",
-            "role" => "required",
-        ]);
-
-        // check if the password is not emoty and if not then hash it
-        if(!is_null($validated['password'])){
-            $validated['password'] = bcrypt($validated['password']);
+        // check if the password is not empty and if not then hash it
+        if($request->get('password')){
+            $request->offsetSet('password', bcrypt($request->password));
         }else{
-            unset($validated['password']);
+            $request->offsetUnset('password');
         }
+
+        // get the validated data
+        $validated = $request->all();
 
         // Update the user
         $user->update($validated);
-        return redirect()->route('admin.users.index')->with('success', 'User '. $user->first_name .' updated successfully');
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'User '. $user->first_name .' updated successfully');
 
     }
 
