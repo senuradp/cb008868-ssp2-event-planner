@@ -65,7 +65,7 @@
                                         <a class="dropdown-item" href="">
                                             Pages
                                         </a>
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ route('admin.categories.index') }}">
                                             Categories
                                         </a>
 

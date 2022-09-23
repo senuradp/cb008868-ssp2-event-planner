@@ -15,7 +15,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = (new Category())
+            ->newQuery()
+            ->paginate(10);
+
+        return view('admin.categories.index',[
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -25,7 +31,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.form', [
+            'category' => new Category()
+        ]);
     }
 
     /**
@@ -47,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -58,7 +66,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.form', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -81,6 +91,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        //delete category
+        $category->delete();
     }
 }
