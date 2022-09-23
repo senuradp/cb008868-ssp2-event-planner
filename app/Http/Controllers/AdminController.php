@@ -121,8 +121,12 @@ class AdminController extends Controller
         $validated = $request->all();
 
         if($request->file('avatar')){
+
             // check if the file exists in the duirectory and delete it
-            Storage::delete($administrator->avatar);
+            if($administrator->avatar){
+                Storage::delete($administrator->avatar);
+            }
+
             $validated['avatar'] = $request->file('avatar')->store('avatars');
         }
 
