@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreBookingRequest;
-use App\Http\Requests\UpdateBookingRequest;
-use App\Models\Finance\Booking;
+use App\Http\Controllers\Controller;
 
-class BookingController extends Controller
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
+use App\Models\Event;
+
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +33,10 @@ class BookingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBookingRequest  $request
+     * @param  \App\Http\Requests\StoreEventRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBookingRequest $request)
+    public function store(StoreEventRequest $request)
     {
         //
     }
@@ -42,10 +44,10 @@ class BookingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Finance\Booking  $booking
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(Event $event)
     {
         //
     }
@@ -53,10 +55,10 @@ class BookingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Finance\Booking  $booking
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit(Event $event)
     {
         //
     }
@@ -64,11 +66,11 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBookingRequest  $request
-     * @param  \App\Models\Finance\Booking  $booking
+     * @param  \App\Http\Requests\UpdateEventRequest  $request
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBookingRequest $request, Booking $booking)
+    public function update(UpdateEventRequest $request, Event $event)
     {
         //
     }
@@ -76,10 +78,10 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Finance\Booking  $booking
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy(Event $event)
     {
         //
     }

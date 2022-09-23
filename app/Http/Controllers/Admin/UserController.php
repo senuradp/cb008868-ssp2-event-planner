@@ -1,33 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreAdminRequest;
-use App\Http\Requests\UpdateAdminRequest;
+use App\Http\Controllers\Controller;
+
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
-use App\Models\Auth\Administrator;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Auth\User;
 use Illuminate\Validation\Rules\Password;
+use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Storage;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
-    public function home(){
-        return view('admin.dashboard');
-    }
+    // public function __construct()
+    // {
+    //     $this->authorize('accessAdministration');
+    // }
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $admins = (new Administrator())
+        $users = (new User())
             ->newQuery()
             ->paginate(1);
 
-        return view('admin.administrators.index',[
-            'admins' => $admins
+        return view('admin.users.index',[
+            'users' => $users
         ]);
     }
 
@@ -38,8 +41,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.administrators.form', [
-            'administrator' => new Administrator()
+        return view('admin.users.form', [
+            'user' => new User()
         ]);
     }
 
@@ -49,10 +52,11 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAdminRequest $request)
+    public function store(StoreUserRequest $request)
     {
+
         // check if the password is not empty and if not then hash it
-         if($request->get('password')){
+        if($request->get('password')){
             $request->offsetSet('password', bcrypt($request->password));
         }else{
             $request->offsetUnset('password');
@@ -61,15 +65,17 @@ class AdminController extends Controller
         // get the validated data
         $validated = $request->all();
 
+        // avatar
         if($request->file('avatar')){
             $validated['avatar'] = $request->file('avatar')->store('avatars');
         }
 
-        $administrator = (new Administrator())->create($validated);
+        $user = (new User())->create($validated);
 
         return redirect()
-            ->route('admin.administrators.index')
-            ->with('success', 'Admin '. $administrator->name .' created successfully.');
+            ->route('admin.users.index')
+            ->with('success', 'User '. $user->first_name .' created successfully.');
+
     }
 
     /**
@@ -78,9 +84,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Administrator $administrator)
+    public function show(User $user)
     {
-        return view('admin.administrators.show', compact('administrator'));
+        // pass the user to the view
+        return view('admin.users.show', compact('user'));
+
     }
 
     /**
@@ -89,11 +97,10 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Administrator $administrator)
+    public function edit(User $user)
     {
-        // dd($administrator);
-        return view('admin.administrators.form', [
-            'administrator' => $administrator
+        return view('admin.users.form', [
+            'user' => $user
         ]);
     }
 
@@ -104,10 +111,8 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdminRequest $request, Administrator $administrator)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        // dd($request);
-
         // check if the password is not empty and if not then hash it
         if($request->get('password')){
             $request->offsetSet('password', bcrypt($request->password));
@@ -115,28 +120,25 @@ class AdminController extends Controller
             $request->offsetUnset('password');
         }
 
-        // dd($request->all());
-
         // get the validated data
         $validated = $request->all();
 
+        // avatar
         if($request->file('avatar')){
-
-            // check if the file exists in the duirectory and delete it
-            if($administrator->avatar){
-                Storage::delete($administrator->avatar);
+            // check if the file exists in the directory and delete it
+            if($user->avatar){
+                Storage::delete($user->avatar);
             }
-
             $validated['avatar'] = $request->file('avatar')->store('avatars');
         }
 
-        // dd($path);
-
-        $administrator->update($validated);
+        // Update the user
+        $user->update($validated);
 
         return redirect()
-            ->route('admin.administrators.index')
-            ->with('success', 'Admin '. $administrator->name .' updated successfully.');
+            ->route('admin.users.index')
+            ->with('success', 'User '. $user->first_name .' updated successfully');
+
     }
 
     /**
@@ -147,17 +149,13 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-
-        // check if the admin id is the id of the current logged in admin and prevent deletion of the current admin
+        // check if the user id is the id of the current logged in user and prevent deletion of the current user
 
         if($id == auth()->id()){
-            return redirect()->route('admin.administrators.index')->with('error', 'You cannot delete yourself');
+            return redirect()->route('admin.users.index')->with('error', 'You cannot delete yourself');
         }
 
-
-        (new Administrator())->newQuery()->find($id)->delete();
-        return redirect()->route('admin.administrators.index');
+        (new User())->newQuery()->find($id)->delete();
+        return redirect()->route('admin.users.index');
     }
-
-
 }

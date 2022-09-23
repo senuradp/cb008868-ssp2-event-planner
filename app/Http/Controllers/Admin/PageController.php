@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests\StorePageRequest;
 use App\Http\Requests\UpdatePageRequest;
 use App\Models\Category;
 use App\Models\Content\Page;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -50,7 +53,18 @@ class PageController extends Controller
 
         $validated = $request->validated();
 
-        (new Page())->create($validated);
+        $page = (new Page())->create([
+            'title' => $validated['title'],
+            'url' => Str::slug($validated['url']),
+            'summary' => $validated['summary'],
+            'content' => $validated['content'],
+            'category_id' => $validated['category_id'],
+        ]);
+
+        //check if the request has an image
+        if ($request->hasFile('image')) {
+            $page->addMediaFromRequest('image')->toMediaCollection('images');
+        }
 
         return redirect()->route('admin.pages.index')->with('success', 'Page created successfully');
     }
@@ -94,16 +108,19 @@ class PageController extends Controller
     {
         $validated = $request->validated();
 
+        $page->update([
+            'title' => $validated['title'],
+            'url' => Str::slug($validated['url']),
+            'summary' => $validated['summary'],
+            'content' => $validated['content'],
+            'category_id' => $validated['category_id'],
+        ]);
+
         // check if the reuest has an image
         if($request->has('image')){
-
             $page->clearMediaCollection('images');
-
             $page->addMediaFromRequest('image')->toMediaCollection('images');
-
         }
-
-        $page->update($validated);
 
         return redirect()->route('admin.pages.index')->with('success', 'Page updated successfully');
     }
