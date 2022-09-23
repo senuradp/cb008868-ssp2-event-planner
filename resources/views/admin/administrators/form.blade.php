@@ -28,12 +28,9 @@
                 <br>
 
                 <div class="row">
-                    @if ($administrator->avatar)
-                        <img class="w-25 rounded mb-3" src="/storage/{{ $administrator->avatar }}" alt="Profile Image">
-                    @endif
                     <div class="col-12">
                         <x-form-input  id="avatar" name="avatar" label="Profile Image" type="file" help="Please upload a profile image with the resolution of 180px X 180px"
-                        value="" />
+                        value="{{ $administrator->avatar }}" />
                     </div>
                 </div>
 
