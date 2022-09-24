@@ -56,6 +56,14 @@
                                     {{ $event->description }}
                                 </p>
                             </div>
+                            <br>
+                            @if ($event->link)
+                                <div class="blog-content">
+                                    <p>
+                                        Event Link : <a href="{{ $event->link }}">{{ $event->link }}</a>
+                                    </p>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="blog blog-single-post">

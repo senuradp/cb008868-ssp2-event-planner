@@ -71,17 +71,17 @@
                                         </a>
 
                                         <div class="dropdown-divider"></div>
+                                        <small class="d-block ps-2">Event</small>
+
+                                        <a class="dropdown-item" href="{{ route('admin.events.index') }}">
+                                            Events
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Bookings</small>
 
                                         <a class="dropdown-item" href="">
                                             Bookings & Reservations
-                                        </a>
-
-                                        <div class="dropdown-divider"></div>
-                                        <small class="d-block ps-2">Event</small>
-
-                                        <a class="dropdown-item" href="">
-                                            Events
                                         </a>
 
                                     </div>
