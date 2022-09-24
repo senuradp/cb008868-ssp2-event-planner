@@ -50,6 +50,10 @@ class Event extends Model implements HasMedia
         return $this->belongsTo(Category::class);
     }
 
+    public function categories(){
+        return $this->belongsToMany(Category::class);
+    }
+
     /**
      * Register media collection
      */
