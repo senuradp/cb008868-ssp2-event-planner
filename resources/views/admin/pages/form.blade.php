@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="row col-12">
-                    <x-form-textarea  id="content" name="content" label="Content" type="text" value="{{ $page->content }}" help="Page Content" />
+                    <x-form-textarea  id="content" name="content" label="Content" type="text" value="{!! $page->content !!}" help="Page Content" ckeditor="true"/>
                 </div>
 
                 {{-- {{ dd($page->getFirstMediaUrl('images')) }} --}}

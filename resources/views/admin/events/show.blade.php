@@ -23,7 +23,7 @@
 
 
                         <p class="mb-3">
-                            {{ $event->description }}
+                            {!! $event->description !!}
                         </p>
 
                         <table class="table table-striped">

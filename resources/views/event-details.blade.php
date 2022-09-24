@@ -53,7 +53,7 @@
                             <hr>
                             <div class="blog-content">
                                 <p>
-                                    {{ $event->description }}
+                                    {!! $event->description !!}
                                 </p>
                             </div>
                             <br>

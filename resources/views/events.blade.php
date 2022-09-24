@@ -7,9 +7,10 @@
         <div class="container">
             <div class="row">
                 {{-- <div class="col-md-4 col-lg-4 col-xl-3 theiaStickySidebar"> --}}
+                <div class="col-md-3 col-lg-3 theiaStickySidebar">
 
-                    {{-- <div class="profile-sidebar"> --}}
-                        {{-- <div class="widget-profile pro-widget-content">
+                    <div class="profile-sidebar">
+                        <div class="widget-profile pro-widget-content">
                             <div class="profile-info-widget">
                                 <a href="#" class="booking-doc-img">
                                     <img src="assets/img/speakers/speaker-thumb-02.jpg" alt="User Image">
@@ -21,8 +22,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
-                        {{-- <div class="dashboard-widget">
+                        </div>
+                        <div class="dashboard-widget">
                             <nav class="dashboard-menu">
                                 <ul>
                                     <li>
@@ -94,11 +95,12 @@
                                     </li>
                                 </ul>
                             </nav>
-                        </div> --}}
-                    {{-- </div> --}}
+                        </div>
+                    </div>
 
-                {{-- </div> --}}
-                <div class="col-md-12 col-lg-12">
+                </div>
+                {{-- <div class="col-md-8 col-lg-8"> --}}
+                <div class="col-md-9 col-lg-9">
                     <div class="card event-service">
                         <div class="card-body py-0">
 
@@ -150,11 +152,11 @@
                                                             </a> --}}
                                                         </div>
                                                         <hr>
-                                                        <p class="add-cont">{{Str::limit($event->description, 100, $end='...')}}</p>
+                                                        <p class="add-cont">{{Str::limit(strip_tags($event->description), 100, $end='...')}}</p>
                                                         <div class="row row-sm">
                                                             <div class="col-6">
                                                                 <a href="{{ route('events.show', $event->url) }}"
-                                                                    class="btn view-btn">View Event Details</a>
+                                                                    class="btn view-btn" style="font-size: 11px;">View Event Details</a>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -51,7 +51,7 @@
 
                 <div class="row">
                     <div class="row col-12">
-                        <x-form-textarea  id="description" name="description" label="Description" type="text" value="{{ $event->description }}" help="Page Description" />
+                        <x-form-textarea  id="description" name="description" label="Description" type="text" value="{!! $event->description !!}" help="Page Description" ckeditor="true"/>
                     </div>
                 </div>
 

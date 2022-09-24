@@ -14,7 +14,7 @@
                         {{ $page->summary }}
                     </p>
 
-                    {{$page->content}}
+                    {!! $page->content !!}
 
                 </div>
             </div>
