@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -46,7 +47,17 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        (new Category())->create([
+            'title' => $validated['title'],
+            'url' => Str::slug($validated['url']),
+            'summary' => $validated['summary'],
+            'content' => $validated['content'],
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -82,7 +93,17 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $validated = $request->validated();
+
+        $category->update([
+            'title' => $validated['title'],
+            'url' => Str::slug($validated['url']),
+            'summary' => $validated['summary'],
+            'content' => $validated['content'],
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully');
     }
 
     /**
