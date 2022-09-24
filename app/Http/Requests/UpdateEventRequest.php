@@ -24,15 +24,15 @@ class UpdateEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'nullable',
+            'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255',
-            'url' => 'nullable|string|max:255',
-            'description' => 'nullable',
+            'url' => 'required|string|max:255',
+            'description' => 'required',
             'date' => 'required|date',
             'time' => 'nullable|string',
             'location' => 'nullable',
             'contact' => 'nullable',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'link' => 'nullable',
             'status' => 'nullable:integer',
         ];
