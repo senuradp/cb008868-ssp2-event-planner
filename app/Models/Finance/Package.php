@@ -5,6 +5,7 @@ namespace App\Models\Finance;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Event;
 
 class Package extends Model
 {
@@ -16,6 +17,10 @@ class Package extends Model
     ];
 
     protected $fillable = [
+        'event_id',
+        'title',
+        'description',
+        'price',
         'sort_order',
         'status',
     ];
@@ -25,5 +30,9 @@ class Package extends Model
 
     protected $casts = [
     ];
+
+    public function event(){
+        return $this->belongsTo(Event::class);
+    }
 
 }
