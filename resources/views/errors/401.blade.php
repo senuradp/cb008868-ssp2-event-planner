@@ -1,5 +1,13 @@
-@extends('errors::minimal')
+@extends('layouts.error')
 
-@section('title', __('Unauthorized'))
-@section('code', '401')
-@section('message', __('Unauthorized'))
+@section('title')
+    401 - Unauthorized
+@endsection
+
+@section('error_title')
+    401 Unauthorized
+@endsection
+
+@section('message')
+    You are not authorized to access this page. <br> Please try again later.
+@endsection
