@@ -50,9 +50,11 @@
                 <div class="row">
                     <div class="col-12">
                         <x-form-input  id="image" name="image" label="Page Image" type="file" help="Page Image"
-                        value="{{ $page->getFirstMediaUrl('images') }}" />
+                        value="{{ $page->getFirstMediaUrl('images','thumb') }}" />
                     </div>
                 </div>
+
+
 
                 {{-- id and title as key value pairs --}}
                 <div class="row">
