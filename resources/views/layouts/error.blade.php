@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<!-- Mirrored from 404.exsythemes.com/v5_light_figure_circle_black_text/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 Sep 2022 12:08:50 GMT -->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,7 +13,7 @@
     <meta content="telephone=no" name="format-detection">
     <title>404 - v4 light figure circle black text</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="/assets/static/img/favicon.ico" />
+    <link type="image/x-icon" href="/assets/img/favicon.png" rel="icon">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,900%7CShare+Tech+Mono%7CSpace+Mono"
