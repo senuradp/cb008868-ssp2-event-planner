@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
 
+            $table->bigInteger('event_id')->unsigned()->nullable();
+            $table->foreign('event_id')->references('id')->on('events');
+
             $table->tinyInteger('sort_order')->default(0);
             $table->boolean('status')->default(true);
 
