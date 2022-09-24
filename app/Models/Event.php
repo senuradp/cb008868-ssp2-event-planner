@@ -11,6 +11,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+use App\Models\Finance\Package;
+
 class Event extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
@@ -52,6 +54,13 @@ class Event extends Model implements HasMedia
 
     public function categories(){
         return $this->belongsToMany(Category::class);
+    }
+
+    /***
+     * Package Relationship
+     */
+    public function packages(){
+        return $this->hasMany(Package::class);
     }
 
     /**

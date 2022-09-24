@@ -59,6 +59,11 @@ class EventController extends Controller
         $event = (new Event())
             ->newQuery()
             ->where('url', $url)
+            ->with([
+                'media',
+                'categories',
+                'packages',
+            ])
             ->first();
 
         if (!$event) {

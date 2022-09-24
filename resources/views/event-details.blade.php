@@ -4,6 +4,24 @@
 
 @section('content')
 
+    <section class="event-bg">
+        <div class="container">
+            <div class="col-md-12 col-lg-12">
+                <div class="banner-header text-center">
+                    <h1>{{ $event->name }}</h1>
+                    <p>{{ Str::limit(strip_tags($event->description),25, $end = '...') }}</p>
+                    <div class="rating">
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star filled"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="content">
         <div class="container">
             <div class="row event-details align-items-center">
@@ -66,11 +84,10 @@
                             @endif
                         </div>
 
-                        <div class="blog blog-single-post">
+                        {{-- <div class="blog blog-single-post">
                             <h3 class="blog-title">Event Summary</h3>
                             <hr>
                             <div class="blog-content">
-                                {{-- table --}}
                                 <table class="table table-striped">
                                     <tbody>
                                         <tr>
@@ -92,6 +109,33 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div> --}}
+
+                        <div class="blog blog-single-post">
+                            <h3 class="mt-4">Packages</h3>
+                            <hr>
+                            <div class="blog-content">
+                            @foreach ($event->packages as $package)
+                                {{-- table to display package details --}}
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Package Name</td>
+                                                <td>{{ $package->title }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Package Price</td>
+                                                <td>LKR {{ number_format($package->price,2) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Package Description</td>
+                                                <td>{{ $package->description }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <hr>
+                                    @endforeach
+                                </div>
                         </div>
 
                         {{-- <div class="card blog-comments clearfix">
