@@ -10,10 +10,10 @@
                 <div class="col-lg-8 col-md-6">
                     <ul class="available-info">
                         <li>
-                            <h2>Ark Royal Venue <i class="fas fa-check-circle verified text-success ml-2"></i></h2>
+                            <h2>{{ $event->name }} <i class="fas fa-check-circle verified text-success ml-2"></i></h2>
                         </li>
                         <li>
-                            <p><i class="fas fa-map-marker-alt"></i> Lower Edmonton, United Kingdom</p>
+                            <p><i class="fas fa-map-marker-alt"></i> {{ $event->location }}</p>
                         </li>
                     </ul>
                     <div class="rating">
@@ -38,22 +38,55 @@
                                 <a href="javascript:void(0);"><img alt="" src="assets/img/blog/blog-04.jpg"
                                         class="img-fluid"></a>
                             </div>
-                            <h3 class="blog-title">Event Description</h3>
                             <div class="blog-content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est laborum.</p>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                                    sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                                    voluptatem sequi nesciunt.</p>
+                                <img class="img-fluid" alt="{{ $event->name }}"
+                                    src="{{ $event->getFirstMediaUrl('images') }}" class="img-fluid w-25 rounded">
+                            </div>
+                            <br>
+                            <h3 class="blog-title">Event Details</h3>
+                            <br>
+                            <div class="blog-content">
+                                <p>
+                                    Event Category : {{ $event->category->title }}
+                                </p>
+                            </div>
+                            <hr>
+                            <div class="blog-content">
+                                <p>
+                                    {{ $event->description }}
+                                </p>
                             </div>
                         </div>
-                        <div class="card blog-comments clearfix">
+
+                        <div class="blog blog-single-post">
+                            <h3 class="blog-title">Event Summary</h3>
+                            <hr>
+                            <div class="blog-content">
+                                {{-- table --}}
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>Event Location</td>
+                                            <td>{{ $event->location }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event Date</td>
+                                            <td>{{ $event->date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event Time</td>
+                                            <td>{{ $event->time }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Event Contact</td>
+                                            <td>{{ $event->contact }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        {{-- <div class="card blog-comments clearfix">
                             <div class="card-header">
                                 <h4 class="card-title">Reviews For Ark Royal Venue</h4>
                             </div>
@@ -187,7 +220,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -195,18 +228,59 @@
 
                     <div class="card category-widget">
                         <div class="card-header">
-                            <h4 class="card-title">Opening Hours</h4>
+                            <h4 class="card-title">Event Summary</h4>
                         </div>
                         <div class="card-body">
-                            <ul class="categories">
-                                <li><a href="#">Monday <span>06.00 - 05.00</span></a></li>
-                                <li><a href="#">Tuesday <span>06.00 - 05.00</span></a></li>
-                                <li><a href="#">Wednesday <span>06.00 - 05.00</span></a></li>
-                                <li><a href="#">Thursday <span>06.00 - 05.00</span></a></li>
-                                <li><a href="#">Friday <span>06.00 - 05.00</span></a></li>
-                                <li><a href="#">Saturday <span>06.00 - 05.00</span></a></li>
-                                <li><a href="#">Sunday <span>06.00 - 05.00</span></a></li>
-                            </ul>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" style="height:25px;">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                            </svg>
+                                            Event Location
+                                        </td>
+                                        <td>{{ $event->location }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" style="height:25px;">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                                            </svg>
+                                            Event Date
+                                        </td>
+                                        <td>{{ $event->date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" style="height:25px;">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            Event Time
+                                        </td>
+                                        <td>{{ $event->time }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" style="height:25px;">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                            </svg>
+                                            Event Contact
+                                        </td>
+                                        <td>{{ $event->contact }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 

@@ -6,9 +6,9 @@
     <div class="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-lg-4 col-xl-3 theiaStickySidebar">
+                {{-- <div class="col-md-4 col-lg-4 col-xl-3 theiaStickySidebar"> --}}
 
-                    <div class="profile-sidebar">
+                    {{-- <div class="profile-sidebar"> --}}
                         {{-- <div class="widget-profile pro-widget-content">
                             <div class="profile-info-widget">
                                 <a href="#" class="booking-doc-img">
@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </div> --}}
-                        <div class="dashboard-widget">
+                        {{-- <div class="dashboard-widget">
                             <nav class="dashboard-menu">
                                 <ul>
                                     <li>
@@ -94,11 +94,11 @@
                                     </li>
                                 </ul>
                             </nav>
-                        </div>
-                    </div>
+                        </div> --}}
+                    {{-- </div> --}}
 
-                </div>
-                <div class="col-md-8 col-lg-8 col-xl-9">
+                {{-- </div> --}}
+                <div class="col-md-12 col-lg-12">
                     <div class="card event-service">
                         <div class="card-body py-0">
 
@@ -109,50 +109,63 @@
                                             Events</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#pat_Programss" data-toggle="tab">Inactive Events</a>
+                                        <a class="nav-link" href="#pat_Programss" data-toggle="tab">Upcoming Events</a>
                                     </li>
                                 </ul>
                             </nav>
 
-
                             <div class="tab-content pt-0">
 
+                                {{-- active events --}}
                                 <div id="pat_appointments" class="tab-pane fade show active">
                                     <div class="row row-grid">
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="profile-widget">
-                                                <div class="doc-img">
-                                                    <a href="/event-details">
-                                                        <img class="img-fluid" alt="User Image"
-                                                            src="assets/img/events/event-06.jpg">
-                                                    </a>
-                                                    <a href="javascript:void(0)" class="fav-btn" title="Inactive">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="pro-content">
-                                                    <h3 class="title">
-                                                        <span>Seminar</span>
-                                                        <a href="/event-details">Marketing Matters!</a>
-                                                    </h3>
-                                                    <p class="add-cont">8 Northumberland Ave, Westminster,</p>
-                                                    <div class="profile-info d-flex mb-0">
-                                                        <a href="speaker-profile.html" class="profile-img">
-                                                            <img src="assets/img/profile/profile-06.jpg" alt="">
+
+                                        @foreach ($events as $event)
+                                            <div class="col-md-6 col-lg-4">
+                                                <div class="profile-widget">
+                                                    <div class="doc-img">
+                                                        <a href="/event-details/{{ $event->id }}">
+                                                            <img class="img-fluid" alt="{{ $event->name }}"
+                                                                src="{{ $event->getFirstMediaUrl('images', 'thumb') }}"
+                                                                class="img-fluid w-25 rounded">
                                                         </a>
-                                                        <a href="speaker-profile.html">
-                                                            <span class="profile-name">ms. Ansleigh</span>
-                                                            <span class="profile-pro">Marketing</span>
-                                                        </a>
+                                                        {{-- <a href="javascript:void(0)" class="fav-btn" title="Inactive">
+                                                            <i class="far fa-eye-slash"></i>
+                                                        </a> --}}
+                                                    </div>
+                                                    <div class="pro-content">
+                                                        <h3 class="title">
+                                                            <span>Category : {{ $event->category->title }}</span>
+                                                            <a href="/event-details/{{ $event->id }}">{{ $event->name }}</a>
+                                                        </h3>
+                                                        <p class="add-cont">{{ $event->location }}</p>
+                                                        <div class="profile-info d-flex mb-0">
+                                                            <a href="speaker-profile.html" class="profile-img">
+                                                                <span class="profile-name">Date   : {{ $event->date }}</span>
+                                                                {{-- <span class="profile-pro">Contact : {{ $event->contact }}</span> --}}
+                                                            </a>
+                                                            {{-- <a href="speaker-profile.html">
+                                                                <span class="profile-name">{{ $event->contact }}</span>
+                                                                <span class="profile-pro">{{ $event->date }}</span>
+                                                            </a> --}}
+                                                        </div>
+                                                        <hr>
+                                                        <p class="add-cont">{{Str::limit($event->description, 100, $end='...')}}</p>
+                                                        <div class="row row-sm">
+                                                            <div class="col-6">
+                                                                <a href="{{ route('events.show', $event->url) }}"
+                                                                    class="btn view-btn">View Event Details</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endforeach
 
                                     </div>
                                 </div>
 
-
+                                {{-- inactive events --}}
                                 <div class="tab-pane fade inactive-event" id="pat_Programss">
                                     <div class="row row-grid">
                                         <div class="col-md-6 col-lg-4">
