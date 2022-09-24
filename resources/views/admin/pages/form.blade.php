@@ -38,11 +38,11 @@
                 </div>
 
                 <div class="row col-12">
-                    <x-form-textarea  id="summary" name="summary" label="Summary" type="text" value="{{ $page->summary }}" help="Page Summary"  />
+                    <x-form-textarea  id="summary" name="summary" label="Summary" type="text" value="{{ $page->summary }}" help="Page Summary" />
                 </div>
 
                 <div class="row col-12">
-                    <x-form-textarea  id="content" name="content" label="Content" type="text" value="{{ $page->content }}" help="Page Content"  />
+                    <x-form-textarea  id="content" name="content" label="Content" type="text" value="{{ $page->content }}" help="Page Content" />
                 </div>
 
                 {{-- {{ dd($page->getFirstMediaUrl('images')) }} --}}
@@ -62,15 +62,22 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-10">
+                                <x-form-input  id="sort_order" name="sort_order" label="Sort Order" type="number" help="Sort order"
+                                    value="{{ $page->sort_order }}" />
+                        </div>
+                        <div class="col-2">
 
-                        <input type="checkbox" class="form-check-input"
-                            id="status" name="status"
-                            value="1" {{ old('status', $page->status) ? 'checked' : '' }}
-                            aria-describedby="statusHelp"/>
+                            <input type="checkbox" class="form-check-input"
+                                id="status" name="status"
+                                value="1" {{ old('status', $page->status) ? 'checked' : '' }}
+                                aria-describedby="statusHelp"/>
 
-                        <label for="status" class="form-label ms-2">Status</label>
+                            <label for="status" class="form-label ms-2">Status</label>
+
+                        </div>
 
                     </div>
                 </div>

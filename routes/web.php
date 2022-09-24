@@ -42,3 +42,6 @@ Route::get('/event-details', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// invokable class does not have a function definition (name of the funtcion)
+Route::get('{url}',App\Http\Controllers\PageController::class)->name('pages.show');
+

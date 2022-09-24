@@ -23,32 +23,36 @@
 
 </div>
 
-@if ($type == 'file')
+@push('scripts')
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var input = document.getElementById('{{ $id }}');
-            input.addEventListener('change', function() {
+    @if ($type == 'file')
 
-                // check the type of file that was selected, (we only want images)
-                var fileType = input.files[0].type;
-                if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
-                    alert('Only JPEG and PNG files are allowed');
-                    input.value = '';
-                }
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var input = document.getElementById('{{ $id }}');
+                input.addEventListener('change', function() {
 
-                // show the selected image
-                // pass the url to the attr src of an img tag and then it will show the image that is the ttyppicsal functionaltt
-                // using the file reader we can create the file instance from the uploaded file into the browser itself and then we
-                //  can use the file reader to read the file and then we can use the result of the file reader to show the image using an img or iframe tag
-                var reader = new FileReader();
-                reader.onload = function() {
-                    var output = document.getElementById('{{ $id }}-img');
-                    output.src = reader.result;
-                };
-                reader.readAsDataURL(input.files[0]);
+                    // check the type of file that was selected, (we only want images)
+                    var fileType = input.files[0].type;
+                    if (fileType !== 'image/jpeg' && fileType !== 'image/png') {
+                        alert('Only JPEG and PNG files are allowed');
+                        input.value = '';
+                    }
 
+                    // show the selected image
+                    // pass the url to the attr src of an img tag and then it will show the image that is the ttyppicsal functionaltt
+                    // using the file reader we can create the file instance from the uploaded file into the browser itself and then we
+                    //  can use the file reader to read the file and then we can use the result of the file reader to show the image using an img or iframe tag
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                        var output = document.getElementById('{{ $id }}-img');
+                        output.src = reader.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+
+                });
             });
-        });
-    </script>
-@endif
+        </script>
+    @endif
+
+@endpush

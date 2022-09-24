@@ -22,6 +22,7 @@
 
     {{-- alpine js cdn url --}}
     <script src="//unpkg.com/alpinejs" defer></script>
+
 </head>
 <body>
     <div id="app">
@@ -153,6 +154,26 @@
 
             @yield('content')
         </main>
+
+        <div class="container bg-white">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="{{ route('admin.dashboard') }}" class="nav-link px-2 text-muted">Dashboard |</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.administrators.index') }}" class="nav-link px-2 text-muted">Admins |</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.users.index') }}" class="nav-link px-2 text-muted">Customers |</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.categories.index') }}" class="nav-link px-2 text-muted">Categories |</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link px-2 text-muted">Pages</a></li>
+                </ul>
+                <p class="text-center text-muted">© {{ date('Y') }} | Buttercup Events | Senura Perera CB008868 </p>
+            </footer>
+        </div>
+
     </div>
+
+
+    {{-- ckeditor text formatter --}}
+    <script src="//cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+    @stack('scripts')
+
 </body>
 </html>

@@ -15,3 +15,13 @@
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
+
+@push('scripts')
+
+    @if($ckeditor)
+        <script>
+            CKEDITOR.replace({{ $id }});
+        </script>
+    @endif
+
+@endpush
