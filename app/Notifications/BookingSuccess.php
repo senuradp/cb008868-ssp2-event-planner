@@ -56,7 +56,7 @@ class BookingSuccess extends Notification
             ->line('Package Name: ' . $this->booking->package->title)
             ->line('Package Price: LKR ' . number_format($this->booking->package->price, 2))
             ->line('Total Price: LKR ' . number_format($this->booking->total_price, 2))
-            ->action('View Booking', url(route('user.booking.index')))
+            ->action('View Booking', url(route('user.booking.my-bookings')))
             ->line('Thank you for booking with us!');
     }
 

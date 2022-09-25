@@ -33,6 +33,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
 
+            $table->integer('rating')->nullable();
+            $table->text('comment')->nullable();
+
             $table->boolean('status')->default(true);
 
             $table->timestamps();

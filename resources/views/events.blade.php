@@ -12,8 +12,8 @@
                         <div class="dashboard-widget">
                             <nav class="dashboard-menu">
                                 <ul>
-                                    <li class="ml-md-3">
-                                        <h4>Categories</h4>
+                                    <li class="ml-md-3 mt-3">
+                                        <h4>Event Categories</h4>
                                     </li>
                                     <li>
                                         <a href="{{ route('events') }}" class="text-decoration-none">

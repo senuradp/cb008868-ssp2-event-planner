@@ -62,7 +62,12 @@ Route::group([
 
     Route::get('/booking-success',[App\Http\Controllers\BookingController::class, 'success'])->name('booking.success');
 
-    Route::get('/my-bookings',[App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
+    Route::get('/my-bookings',[App\Http\Controllers\BookingController::class, 'myBookings'])->name('booking.my-bookings');
+
+    Route::get('/my-booking-detailed/{id}',[App\Http\Controllers\BookingController::class, 'myBookingsDetailed'])->name('booking.my-bookings-detailed');
+
+    // post review
+    Route::post('/review',[App\Http\Controllers\BookingController::class, 'customerReview'])->name('review.submit');
 
 });
 

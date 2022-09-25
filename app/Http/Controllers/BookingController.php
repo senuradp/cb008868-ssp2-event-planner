@@ -11,12 +11,13 @@ class BookingController extends Controller
     public function show(Package $package)
     {
         // return to view with compact() function
-        return view('booking.booking',[
+        return view('booking.booking', [
             'package' => $package,
         ]);
     }
 
-    public function bookEvent(Request $request){
+    public function bookEvent(Request $request)
+    {
 
 
         $request->validate([
@@ -46,16 +47,17 @@ class BookingController extends Controller
 
         auth()->user()->notify((new \App\Notifications\BookingSuccess($booking)));
 
-        // return redirect()->route('booking.index')->with('success', 'Booking has been created successfully!');
-        return redirect()->route('user.booking.success');
+        return redirect()->route('user.booking.success')->with('success', 'Booking has been created successfully!');
     }
 
-    public function success(){
+    public function success()
+    {
 
         return view('booking.success');
     }
 
-    public function index(){
+    public function myBookings()
+    {
 
         // get the authenticated user
         $user = auth()->user();
@@ -63,9 +65,45 @@ class BookingController extends Controller
         // get the user's bookings
         $bookings = $user->bookings;
 
-        return view('booking.index',[
+        return view('booking.my-bookings', [
             'user' => $user,
             'bookings' => $bookings,
         ]);
     }
+
+    public function myBookingsDetailed(Request $request, string $id)
+    {
+
+        $booking = (new Booking())
+            ->newQuery()
+            ->where('id', $id)
+            ->first();
+
+        if (!$booking) {
+            return abort(404);
+        }
+
+        return view('booking.my-booking-detailed', [
+            'booking' => $booking
+        ]);
+    }
+
+    public function customerReview(){
+
+        $attributes = request()->validate([
+            'booking_id' => 'required',
+            'rating' => 'required',
+            'comment' => 'required',
+        ]);
+
+        $booking = Booking::where('id',$attributes['booking_id'])->first();
+
+        $booking->update([
+            'rating' => $attributes['rating'],
+            'comment' => $attributes['comment'],
+        ]);
+
+        return redirect()->route('user.booking.my-bookings')->with('success','Review submitted !');
+    }
+
 }
