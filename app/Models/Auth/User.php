@@ -2,6 +2,7 @@
 
 namespace App\Models\Auth;
 
+use App\Models\Finance\Booking;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,4 +60,14 @@ class User extends Authenticatable
         'address' => 'encrypted',
         'phone' => 'encrypted',
     ];
+
+    // public function scopeHasRole(Builder $query, string $role)
+    // {
+    //     return $this->role == $role;
+    // }
+
+    public function bookings(){
+        return $this->hasMany(Booking::class);
+    }
+
 }

@@ -21,9 +21,12 @@ class Booking extends Model
         'event_id',
         'package_id',
         'user_id',
-        'quantity',
         'date',
         'total_price',
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
         'status',
     ];
 

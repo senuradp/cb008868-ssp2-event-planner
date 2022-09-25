@@ -322,39 +322,49 @@
 
             <div class="blog blog-single-post">
                 <h3 class="mt-4">Packages</h3>
-                <div class="blog-content col-12 row">
-                    <hr>
-                    @foreach ($event->packages as $package)
-                        {{-- table to display package details --}}
-                        {{-- print tables in 3 columns --}}
+                <div class="blog-content col-12">
+                    {{-- <hr> --}}
+                    <div class="row">
 
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>Package Name</td>
-                                    <td>{{ $package->title }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Package Price</td>
-                                    <td>LKR {{ number_format($package->price, 2) }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Package Description</td>
-                                    <td>{{ $package->description }}</td>
-                                </tr>
-                                {{-- book now button --}}
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Book Now</a>
-                                    </td>
-                            </tbody>
-                        </table>
-                        <div>
+
+
+                        @foreach ($event->packages as $package)
+                            {{-- table to display package details --}}
+                            {{-- print tables in 3 columns --}}
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>Package Name</td>
+                                            <td>{{ $package->title }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Package Price</td>
+                                            <td>LKR {{ number_format($package->price, 2) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Package Description</td>
+                                            <td>{{ $package->description }}</td>
+                                        </tr>
+                                        {{-- book now button --}}
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <a href="{{ route('user.booking.show', $package->id) }}" class="btn btn-primary w-100">Book Now</a>
+                                                {{-- <a href="#" class="btn btn-primary w-100">Book Now</a> --}}
+                                            </td>
+                                    </tbody>
+                                </table>
+                                <hr>
+                            </div>
+
+                            {{-- <div>
                             <br>
                             <hr>
-                        </div>
-                    @endforeach
+                        </div> --}}
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
 
@@ -415,12 +425,12 @@
                             <div class="form-group">
                                 <label>Rating <span class="text-danger">*</span></label>
                                 <select name="rating" id="rating" class="custom-select focus-shadow-0">
-                                {{-- <option value="5" {{$booking->rating==5 ? 'selected':''}}>★★★★★ (5/5)</option> --}}
-                                <option value="5">★★★★★ (5/5)</option>
-                                <option value="4">★★★★☆ (4/5)</option>
-                                <option value="3">★★★☆☆ (3/5)</option>
-                                <option value="2">★★☆☆☆ (2/5)</option>
-                                <option value="1">★☆☆☆☆ (1/5)</option>
+                                    {{-- <option value="5" {{$booking->rating==5 ? 'selected':''}}>★★★★★ (5/5)</option> --}}
+                                    <option value="5">★★★★★ (5/5)</option>
+                                    <option value="4">★★★★☆ (4/5)</option>
+                                    <option value="3">★★★☆☆ (3/5)</option>
+                                    <option value="2">★★☆☆☆ (2/5)</option>
+                                    <option value="1">★☆☆☆☆ (1/5)</option>
                                 </select>
                             </div>
                             <div class="form-group">

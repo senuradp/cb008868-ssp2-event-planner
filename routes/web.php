@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Finance\Booking;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 /*
@@ -18,9 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dev', function () {
-    dd(Gate::allows('admin'));
-    dd(resolve('ButtercupEvents'));
-    return view('home');
+    // dd(Gate::allows('admin'));
+    // dd(resolve('ButtercupEvents'));
+    //test notification
+    // auth()->user()->notify((new \App\Notifications\BookingSuccess((new Booking())->find(1))));
+    // return view('home');
 });
 
 Auth::routes();
@@ -46,4 +49,20 @@ Route::get('/event-details', function () {
 
 // invokable class does not have a function definition (name of the funtcion)
 Route::get('{url}',App\Http\Controllers\PageController::class)->name('pages.show');
+
+Route::group([
+    'prefix' => 'user',
+    'middleware' => ['auth:web'],
+    'as' => 'user.',
+], function () {
+
+    Route::get('/booking/{package}',[App\Http\Controllers\BookingController::class, 'show'])->name('booking.show');
+
+    Route::post('/booking/{package}',[App\Http\Controllers\BookingController::class, 'bookEvent'])->name('booking.bookEvent');
+
+    Route::get('/booking-success',[App\Http\Controllers\BookingController::class, 'success'])->name('booking.success');
+
+    Route::get('/my-bookings',[App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
+
+});
 

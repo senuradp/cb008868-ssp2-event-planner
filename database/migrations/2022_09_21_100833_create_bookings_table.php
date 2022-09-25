@@ -25,11 +25,14 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->integer('quantity')->unsigned()->default(0);
-
             $table->date('date')->nullable();
 
             $table->float('total_price', 10, 2)->nullable();
+
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
 
             $table->boolean('status')->default(true);
 
