@@ -39,7 +39,6 @@ class UpdateUserRequest extends FormRequest
             "state" => "required",
             "zip" => "required",
             "country" => "required",
-            "role" => "required",
         ];
     }
 }

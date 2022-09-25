@@ -19,8 +19,7 @@
                                         <div class="doc-img">
                                             <a href="">
                                                 <img class="img-fluid" alt="{{ $booking->name }}"
-                                                    src="{{ $booking->event->image }}"
-                                                    class="img-fluid w-25 rounded">
+                                                    src="{{ $booking->event->image }}" class="img-fluid w-25 rounded">
                                             </a>
                                         </div>
                                         <div class="pro-content">
@@ -31,19 +30,23 @@
                                                 <a href="#" class="profile-img">
                                                     <span class="profile-pro">{{ $booking->event->location }}</span>
                                                     <br>
-                                                    <span class="profile-pro">Category : {{ $booking->event->category->title }}</span>
+                                                    <span class="profile-pro">Category :
+                                                        {{ $booking->event->category->title }}</span>
                                                     <span class="profile-pro"> | </span>
                                                     <span class="profile-pro">Date : {{ $booking->date }}</span>
                                             </div>
                                             <hr>
                                             <div class="row row-sm">
                                                 <div class="col-12">
-                                                    <a href="{{ route('user.booking.my-bookings-detailed',$booking->id) }}" class="btn view-btn" style="font-size: 11px;">View booking Details</a>
+                                                    <a href="{{ route('user.booking.my-bookings-detailed', $booking->id) }}"
+                                                        class="btn view-btn" style="font-size: 13px;">View booking
+                                                        Details</a>
                                                 </div>
                                             </div>
                                             <div class="mt-3">
                                                 @foreach ($booking->event->categories as $category)
-                                                    <span class="badge bg-primary" style="font-size:13px">{{ $category->title }}</span>
+                                                    <span class="badge bg-primary"
+                                                        style="font-size:13px">{{ $category->title }}</span>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -61,5 +64,7 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-        @endsection
+@endsection

@@ -33,8 +33,6 @@ class User extends Authenticatable
         'zip',
         'country',
         'avatar',
-        'settings',
-        'role', // 'admin', 'user', 'manager'
     ];
 
     /**
@@ -55,7 +53,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'settings' => 'array',
         'nic' => 'encrypted',
         'address' => 'encrypted',
         'phone' => 'encrypted',

@@ -43,8 +43,6 @@ class DatabaseSeeder extends Seeder
             'state' => 'Wetstern',
             'zip' => '10200',
             'country' => 'LK',
-            'settings' => '[]',
-            'role' => 'user',
         ]);
 
         // \App\Models\Auth\User::factory(10)->create();

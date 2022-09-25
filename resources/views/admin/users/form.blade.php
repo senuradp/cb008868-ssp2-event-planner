@@ -94,10 +94,10 @@
                     </div>
                 </div>
 
-                <div class="col-md-12">
+                {{-- <div class="col-md-12">
                     <x-form-select id="role" name="role" label="Role" type="text" value="{{ $user->role }}" help="User Role" placeholder="Select Role"
                         :options="['admin','user','manager']"/>
-                </div>
+                </div> --}}
 
                 <br>
 

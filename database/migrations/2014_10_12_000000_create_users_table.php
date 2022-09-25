@@ -34,21 +34,6 @@ return new class extends Migration
             // avatar
             $table->string('avatar')->nullable();
 
-            $table->json('settings')->nullable();
-            // will access this field in the future
-            // [
-            //     'settings' => [
-            //         'notifications' => [
-            //             'email' => true,
-            //             'sms' => true,
-            //         ],
-            //         'language' => 'en',
-            //     ],
-            // ];
-
-
-
-            $table->enum('role', ['admin', 'user'])->default('user');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

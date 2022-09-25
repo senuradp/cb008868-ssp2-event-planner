@@ -353,6 +353,7 @@
                                                 <a href="{{ route('user.booking.show', $package->id) }}" class="btn btn-primary w-100">Book Now</a>
                                                 {{-- <a href="#" class="btn btn-primary w-100">Book Now</a> --}}
                                             </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <hr>
