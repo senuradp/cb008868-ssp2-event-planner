@@ -144,72 +144,43 @@
                         <li class="{{ Request::segment(1) == '' ? 'active' : '' }}">
                             <a href="/">Home</a>
                         </li>
-                        <li class="has-submenu {{ Request::segment(1) == 'events' ? 'active' : '' }}">
-                            <a href="#">Events <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li class=""><a href="speaker-dashboard.html">Speaker Dashboard</a></li>
-                                <li class=""><a href="/events">Events</a></li>
-                                <li class=""><a href="schedule-timings.html">Schedule Timing</a></li>
-                                <li class=""><a href="my-customers.html">customers List</a></li>
-                                <li class=""><a href="customer-profile.html">customers Profile</a></li>
-                                <li class=""><a href="chat-speaker.html">Chat</a></li>
-                                <li class=""><a href="invoices.html">Invoices</a></li>
-                                <li class=""><a href="speaker-profile-settings.html">Profile Settings</a></li>
-                                <li class=""><a href="reviews.html">Reviews</a></li>
-                                <li class=""><a href="speaker-register.html">speaker Register</a></li>
-                            </ul>
+                        <li class="has-submenu {{ Request::segment(2) == 'events' ? 'active' : '' }}">
+                            <a href="{{ route('events') }}">Events</a>
                         </li>
-                        <li class="has-submenu {{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <a href="#">Customers <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li class="has-submenu ">
-                                    <a href="#">Speakers</a>
-                                    <ul class="submenu">
-                                        <li class=""><a href="map-grid.html">Map Grid</a></li>
-                                        <li class=""><a href="map-list.html">Map List</a></li>
-                                    </ul>
-                                </li>
-                                <li class=""><a href="search.html">Search speaker</a></li>
-                                <li class=""><a href="speaker-profile.html">speaker Profile</a></li>
-                                <li class=""><a href="booking.html">Booking</a></li>
-                                <li class=""><a href="checkout.html">Checkout</a></li>
-                                <li class=""><a href="booking-success.html">Booking Success</a></li>
-                                <li class=""><a href="customer-dashboard.html">Customer Dashboard</a></li>
-                                <li class=""><a href="favourites.html">Favourites</a></li>
-                                <li class=""><a href="chat.html">Chat</a></li>
-                                <li class=""><a href="profile-settings.html">Profile Settings</a></li>
-                                <li class=""><a href="change-password.html">Change Password</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu {{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <a href="#">pages <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li class=""><a href="voice-call.html">Voice Call</a></li>
-                                <li class=""><a href="video-call.html">Video Call</a></li>
-                                <li class=""><a href="search.html">Search speakers</a></li>
-                                <li class=""><a href="calendar.html">Calendar</a></li>
-                                <li class=""><a href="components.html">Components</a></li>
-                                <li class="has-submenu ">
-                                    <a href="invoices.html">Invoices</a>
-                                    <ul class="submenu">
-                                        <li class=""><a href="invoices.html">Invoices</a></li>
-                                        <li class=""><a href="invoice-view.html">Invoice View</a></li>
-                                    </ul>
-                                </li>
-                                <li class=""><a href="blank-page.html">Starter Page</a></li>
-                                <li class=""><a href="event-details.html">Event Details</a></li>
-                                <li class=""><a href="login.html">Login</a></li>
-                                <li class=""><a href="register.html">Register</a></li>
-                                <li class=""><a href="forgot-password.html">Forgot Password</a></li>
-                            </ul>
-                        </li>
-                        <li class="has-submenu {{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <a href="#">Blog <i class="fas fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                <li class=""><a href="blog-list.html">Blog List</a></li>
-                                <li class=""><a href="blog-grid.html">Blog Grid</a></li>
-                                <li class=""><a href="blog-details.html">Blog Details</a></li>
-                            </ul>
+                        {{-- <li class="has-submenu {{ Request::segment(3) == 'events' ? 'active' : '' }}">
+                            <a href="/events">Archived Events</a>
+                        </li> --}}
+                        <li class="has-submenu {{ Request::segment(3) == 'events' ? 'active' : '' }}">
+
+                            @guest
+                                @if (Route::has('login'))
+                                @endif
+
+                                @if (Route::has('register'))
+                                @endif
+                            @else
+                                <a style="color:white">
+                                    Profile
+                                    <i class="fas fa-chevron-down"></i>
+                                </a>
+                                <ul class="submenu">
+                                    <li class=""><a href="#">My Profile</a></li>
+                                    <li class=""><a href="{{ route('user.booking.my-bookings') }}">My Bookings</a></li>
+                                    <li class=""><a href="#">My Reviews</a></li>
+                                    <li class="">
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+
+                            @endguest
                         </li>
                         <li class="nav-item align-items-center d-flex">
                             @guest
@@ -228,76 +199,39 @@
                                     {{-- </div> --}}
                                 @endif
                             @else
-                                {{-- <li class="nav-item dropdown"> --}}
-                                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
-                                    </a> --}}
-
-                                {{-- <div class="nav-link" aria-labelledby="navbarDropdown"> --}}
-                                {{-- <a class="nav-link header-login" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form> --}}
-                                {{-- </div> --}}
-                                {{-- </li> --}}
                             @endguest
                         </li>
-                        {{-- <li class="login-link">
-                                <a href="/login">Login / Signup</a>
-                            </li> --}}
                     </ul>
                 </div>
-
-                {{-- <ul class="nav header-navbar-rht">
-                    <li class="nav-item contact-item">
-                        <a href="javascript:void(0);" class="header-contact-img">
-                            <img src="/assets/img/mic-icon.png" alt="mic">
-                        </a>
-                    </li>
-                </ul> --}}
 
                 <ul class="main-nav">
 
                     @guest
                         @if (Route::has('login'))
+                            <a style="color: white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="height:35px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </a>
                         @endif
 
                         @if (Route::has('register'))
                         @endif
                     @else
-                        <li class="has-submenu">
+                        <li>
                             <a style="color:white">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="height:35px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
                                 {{ Auth::user()->name }}
-                                <i class="fas fa-chevron-down"></i>
                             </a>
-                            <ul class="submenu">
-                                <li class=""><a href="#">Profile</a></li>
-                                <li class="">
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
+
                         </li>
                     @endguest
-                    {{-- <a href="javascript:void(0);" class="header-contact-detail">
-                                <p class="contact-header">Your Bookings</p>
-                                <p class="contact-info-header"> $300</p>
-                            </a> --}}
-                    {{-- </li> --}}
-
                 </ul>
             </nav>
             {{-- navbar end --}}
@@ -306,6 +240,23 @@
         {{-- header end --}}
 
         <div>
+            <div class="row col-md-9 m-auto">
+                <div class="col">
+
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                </div>
+            </div>
 
             <div class="main-wrapper">
                 {{-- content --}}
