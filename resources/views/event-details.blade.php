@@ -9,7 +9,7 @@
             <div class="col-md-12 col-lg-12">
                 <div class="banner-header text-center">
                     <h1>{{ $event->name }}</h1>
-                    <p>{{ Str::limit(strip_tags($event->description),25, $end = '...') }}</p>
+                    <p>{{ Str::limit(strip_tags($event->description), 25, $end = '...') }}</p>
                     <div class="rating">
                         <i class="fas fa-star filled"></i>
                         <i class="fas fa-star filled"></i>
@@ -43,11 +43,12 @@
                         <i class="fas fa-star mr-2"></i>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 text-right">
+                {{-- <div class="col-lg-4 col-md-6 text-right">
                     <a href="booking.html" class="btn book-btn">Book Now</a>
                     <a href="javascript:void(0);" class="rate cursor-auto" tabindex="0">$ 450.00/HR</a>
-                </div>
+                </div> --}}
             </div>
+
             <div class="row">
                 <div class="col-lg-8 col-md-12">
                     <div class="blog-view">
@@ -84,59 +85,6 @@
                             @endif
                         </div>
 
-                        {{-- <div class="blog blog-single-post">
-                            <h3 class="blog-title">Event Summary</h3>
-                            <hr>
-                            <div class="blog-content">
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td>Event Location</td>
-                                            <td>{{ $event->location }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Event Date</td>
-                                            <td>{{ $event->date }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Event Time</td>
-                                            <td>{{ $event->time }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Event Contact</td>
-                                            <td>{{ $event->contact }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> --}}
-
-                        <div class="blog blog-single-post">
-                            <h3 class="mt-4">Packages</h3>
-                            <hr>
-                            <div class="blog-content">
-                            @foreach ($event->packages as $package)
-                                {{-- table to display package details --}}
-                                    <table class="table table-striped">
-                                        <tbody>
-                                            <tr>
-                                                <td>Package Name</td>
-                                                <td>{{ $package->title }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Package Price</td>
-                                                <td>LKR {{ number_format($package->price,2) }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Package Description</td>
-                                                <td>{{ $package->description }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <hr>
-                                    @endforeach
-                                </div>
-                        </div>
 
                         {{-- <div class="card blog-comments clearfix">
                             <div class="card-header">
@@ -276,11 +224,11 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
+                <div class="col-lg-4 col-md-12 sidebar-right">
 
                     <div class="card category-widget">
                         <div class="card-header">
-                            <h4 class="card-title">Event Summary</h4>
+                            <h4 class="card-title">Quick Info</h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -294,7 +242,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                                             </svg>
-                                            Event Location
+                                            Location
                                         </td>
                                         <td>{{ $event->location }}</td>
                                     </tr>
@@ -305,7 +253,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
                                             </svg>
-                                            Event Date
+                                            Date
                                         </td>
                                         <td>{{ $event->date }}</td>
                                     </tr>
@@ -316,7 +264,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
-                                            Event Time
+                                            Time
                                         </td>
                                         <td>{{ $event->time }}</td>
                                     </tr>
@@ -327,9 +275,21 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                             </svg>
-                                            Event Contact
+                                            Contact
                                         </td>
                                         <td>{{ $event->contact }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" style="height:25px;">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                            </svg>
+
+                                            Email
+                                        </td>
+                                        <td>{{ $event->email }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -337,7 +297,7 @@
                     </div>
 
 
-                    <div class="card category-widget">
+                    {{-- <div class="card category-widget">
                         <div class="card-header">
                             <h4 class="card-title">Location</h4>
                         </div>
@@ -353,11 +313,129 @@
                                 <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
 
             </div>
+
+
+            <div class="blog blog-single-post">
+                <h3 class="mt-4">Packages</h3>
+                <div class="blog-content col-12 row">
+                    <hr>
+                    @foreach ($event->packages as $package)
+                        {{-- table to display package details --}}
+                        {{-- print tables in 3 columns --}}
+
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>Package Name</td>
+                                    <td>{{ $package->title }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Package Price</td>
+                                    <td>LKR {{ number_format($package->price, 2) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Package Description</td>
+                                    <td>{{ $package->description }}</td>
+                                </tr>
+                                {{-- book now button --}}
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary">Book Now</a>
+                                    </td>
+                            </tbody>
+                        </table>
+                        <div>
+                            <br>
+                            <hr>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="blog blog-single-post">
+                <div class="card blog-comments clearfix">
+                    <div class="card-header">
+                        <h4 class="card-title">Reviews For {{ $event->name }}</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="rating mb-4">
+                            <span class="bg-success text-white">4.3</span>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="d-inline-block average-rating">(14 Rating)</span>
+                        </div>
+                        <ul class="comments-list">
+                            <li>
+                                <div class="comment">
+                                    {{-- <div class="comment-author">
+                                        <img class="avatar" alt="" src="assets/img/customers/customer7.jpg">
+                                    </div> --}}
+                                    <div class="comment-block">
+                                        <span class="comment-by">
+                                            <span class="blog-author-name">Branice Grier</span>
+                                        </span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                        <p class="blog-date">December 13, 2020</p>
+                                        <a class="comment-btn" href="#">
+                                            <i class="fas fa-reply"></i> Reply
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog blog-single-post">
+                <div class="card new-comment clearfix">
+                    <div class="card-header">
+                        <h4 class="card-title">Leave Comment</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="#">
+                            @csrf
+                            <div class="form-group">
+                                <label>Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" value="">
+                            </div>
+                            <div class="form-group">
+                                <label>Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Rating <span class="text-danger">*</span></label>
+                                <select name="rating" id="rating" class="custom-select focus-shadow-0">
+                                {{-- <option value="5" {{$booking->rating==5 ? 'selected':''}}>★★★★★ (5/5)</option> --}}
+                                <option value="5">★★★★★ (5/5)</option>
+                                <option value="4">★★★★☆ (4/5)</option>
+                                <option value="3">★★★☆☆ (3/5)</option>
+                                <option value="2">★★☆☆☆ (2/5)</option>
+                                <option value="1">★☆☆☆☆ (1/5)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Comment</label>
+                                <textarea rows="4" class="form-control"></textarea>
+                            </div>
+                            <div class="submit-section">
+                                <button class="btn btn-primary submit-btn" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 

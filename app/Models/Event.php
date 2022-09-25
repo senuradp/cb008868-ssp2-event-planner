@@ -56,6 +56,13 @@ class Event extends Model implements HasMedia
         return $this->belongsToMany(Category::class);
     }
 
+    /***
+     * Package Relationship
+     */
+    public function packages(){
+        return $this->hasMany(Package::class);
+    }
+
     /**
      * Register media collection
      */

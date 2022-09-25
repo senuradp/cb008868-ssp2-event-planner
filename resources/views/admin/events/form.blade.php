@@ -78,6 +78,15 @@
 
                     <div class="row">
                         <div class="col-12">
+                            <x-form-input  id="link" name="link" label="Event Link" type="text" help="Event Link"
+                            value="{{ old('link', $event->link) }}" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
                             <x-form-select id="category_id" name="category_id" label="Event Category"
                                 value="{{ $event->category_id }}" help="Please select the primary category of the hotel"
                                 placeholder="Select Category" :options="$categories->pluck('title', 'id')" />
