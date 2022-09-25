@@ -66,6 +66,11 @@ class EventController extends Controller
             'status' => $validated['status'],
         ]);
 
+        // check if the request has categories and sync them
+        if ($request->has('categories')) {
+            $event->categories()->sync($request->categories);
+        }
+
         if ($request->hasFile('image')) {
             $event->addMediaFromRequest('image')->toMediaCollection('images');
         }
@@ -125,6 +130,11 @@ class EventController extends Controller
             'link' => $validated['link'],
             'status' => $validated['status'],
         ]);
+
+        // check if the request has categories and sync them
+        if ($request->has('categories')) {
+            $event->categories()->sync($request->categories);
+        }
 
         if ($request->hasFile('image')) {
             $event->addMediaFromRequest('image')->toMediaCollection('images');

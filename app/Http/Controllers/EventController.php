@@ -3,19 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
     public function home(){
         $events = (new Event())
+            ->newQuery()
             ->where('status', 1)
-            ->orderBy('date', 'asc')
+            // ->whereDate('date', '=', date('Y-m-d'))
+            ->with([
+                'categories',
+                'media'
+            ]);
+
+        // check if the request has a cid column and get the hotels by the category id
+
+        if(request()->has('cid')){
+            // create a new query to get the hotels by the category id
+            $events->whereHas('categories', function($query){
+                $query->where('category_id', request()->get('cid'));
+            });
+        }
+
+        $events = $events->orderBy('date', 'asc')
             ->take(10)
             ->get();
+
+
         // dd($events);
-        return view('events', [
-            'events' => $events
+       return view('events', [
+            'events' => $events,
+            'categories' => (new Category())
+                ->newQuery()
+                ->where('status', 1)
+                ->get(),
         ]);
     }
 
