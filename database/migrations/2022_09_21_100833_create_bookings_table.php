@@ -15,22 +15,19 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-
+// event id
             $table->bigInteger('event_id')->unsigned()->nullable();
             $table->foreign('event_id')->references('id')->on('events');
-
+// package id
             $table->bigInteger('package_id')->unsigned()->nullable();
             $table->foreign('package_id')->references('id')->on('packages');
-
+// user id
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->integer('quantity')->unsigned()->default(0);
-
             $table->date('date')->nullable();
-
             $table->float('total_price', 10, 2)->nullable();
-
             $table->boolean('status')->default(true);
 
             $table->timestamps();
