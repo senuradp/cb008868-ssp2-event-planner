@@ -19,6 +19,10 @@ return new class extends Migration
             $table->bigInteger('event_id')->unsigned()->nullable();
             $table->foreign('event_id')->references('id')->on('events');
 
+            $table->string('title');
+            $table->longText('description')->nullable();
+            $table->float('price', 10, 2)->nullable();
+
             $table->tinyInteger('sort_order')->default(0);
             $table->boolean('status')->default(true);
 
