@@ -56,6 +56,10 @@ Route::group([
     'as' => 'user.',
 ], function () {
 
+    Route::get('/profile', [App\Http\Controllers\UserController::class, 'show'])->name('profile.show');
+
+    Route::post('/profile-update', [App\Http\Controllers\UserController::class, 'udpateProfile'])->name('profile.update');
+
     Route::get('/booking/{package}',[App\Http\Controllers\BookingController::class, 'show'])->name('booking.show');
 
     Route::post('/booking/{package}',[App\Http\Controllers\BookingController::class, 'bookEvent'])->name('booking.bookEvent');
@@ -68,6 +72,8 @@ Route::group([
 
     // post review
     Route::post('/review',[App\Http\Controllers\BookingController::class, 'customerReview'])->name('review.submit');
+
+    Route::get('/my-reviews',[App\Http\Controllers\UserController::class, 'myReviews'])->name('review.my-reviews');
 
 });
 
