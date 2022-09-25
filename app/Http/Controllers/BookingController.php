@@ -44,7 +44,7 @@ class BookingController extends Controller
             'status' => 1,
         ]);
 
-
+        auth()->user()->notify((new \App\Notifications\BookingSuccess($booking)));
 
         // return redirect()->route('booking.index')->with('success', 'Booking has been created successfully!');
         return redirect()->route('user.booking.success');
