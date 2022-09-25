@@ -5,6 +5,9 @@ namespace App\Models\Finance;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Auth\User;
+use App\Models\Finance\Package;
+use App\Models\Event;
 
 class Booking extends Model
 {
@@ -15,6 +18,12 @@ class Booking extends Model
     ];
 
     protected $fillable = [
+        'event_id',
+        'package_id',
+        'user_id',
+        'quantity',
+        'date',
+        'total_price',
         'status',
     ];
 
@@ -23,5 +32,21 @@ class Booking extends Model
 
     protected $casts = [
     ];
+
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use App\Models\Category;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -54,6 +54,11 @@ class EventController extends Controller
         $event = (new Event())
             ->newQuery()
             ->where('url', $url)
+            ->with([
+                'media',
+                'categories',
+                'packages',
+            ])
             ->first();
 
         if (!$event) {

@@ -6,9 +6,7 @@
 
             <div class="col-md-8 bg-white p-4">
 
-                <form method="POST"
-                    action="{{ $event->id ? route('admin.events.update', $event->id) : route('admin.events.store') }}"
-                    enctype="multipart/form-data" x-data="hotelForm">
+                <form method="POST" action="{{ $event->id ? route('admin.events.update', $event->id) : route('admin.events.store') }}" enctype="multipart/form-data" x-data="hotelForm">
 
                     @if ($event->id)
                         @method('PUT')
