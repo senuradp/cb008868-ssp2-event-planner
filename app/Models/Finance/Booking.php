@@ -36,17 +36,17 @@ class Booking extends Model
     protected $casts = [
     ];
 
-
+// Event
     public function event()
     {
         return $this->belongsTo(Event::class);
     }
-
+// Package
     public function package()
     {
         return $this->belongsTo(Package::class);
     }
-
+// User
     public function user()
     {
         return $this->belongsTo(User::class);
