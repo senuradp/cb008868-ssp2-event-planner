@@ -343,7 +343,8 @@
 
 
             <div class="blog blog-single-post">
-                <h3 class="mt-4">Packages</h3>
+                <h3 class="mt-4">Packages <i class="fa fa-suitcase" aria-hidden="true"></i></h3>
+                <hr>
                 <div class="blog-content col-12">
                     {{-- <hr> --}}
                     <div class="row">
