@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
-@section('title', 'Event Details')
+@section('title', $event->name)
+
 
 @section('content')
 
@@ -228,7 +229,14 @@
 
                     <div class="card category-widget">
                         <div class="card-header">
-                            <h4 class="card-title">Quick Info</h4>
+                            <h4 class="card-title">Quick Info
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="height:25px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                </svg>
+
+                            </h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -297,23 +305,37 @@
                     </div>
 
 
-                    {{-- <div class="card category-widget">
+                    <div class="card category-widget">
                         <div class="card-header">
-                            <h4 class="card-title">Location</h4>
+                            <h4 class="card-title">Event Analytics
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" style="height: 30px">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                                </svg>
+                            </h4>
                         </div>
                         <div class="card-body">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4953.847368114557!2d-0.0632014717887672!3d51.62460711861799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761eef4dbfa641%3A0xc15b86649840d2ec!2sEdmonton%20Green%2C%20London%2C%20UK!5e0!3m2!1sen!2sin!4v1614591393541!5m2!1sen!2sin"
-                                allowfullscreen=""></iframe>
-                            <ul class="social-share mt-3">
-                                <li><a href="#" title="Facebook"><i class="fab fa-facebook"></i></a></li>
-                                <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                                <li><a href="#" title="Google Plus"><i class="fab fa-google-plus"></i></a></li>
-                                <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
-                            </ul>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#" class="fs-6"><i class="fa fa-eye" aria-hidden="true"></i> This page has {{ $event->view_count }} views.</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#" class="fs-6">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style="height: 25px">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                                                  </svg>
+                                                This event has {{ $event->bookings->count() }} registration(s) </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div> --}}
+                    </div>
 
                 </div>
 
@@ -330,7 +352,6 @@
 
                         @foreach ($event->packages as $package)
                             {{-- table to display package details --}}
-                            {{-- print tables in 3 columns --}}
                             <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <table class="table table-striped">
                                     <tbody>
@@ -350,7 +371,8 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <a href="{{ route('user.booking.show', $package->id) }}" class="btn btn-primary w-100">Book Now</a>
+                                                <a href="{{ route('user.booking.show', $package->id) }}"
+                                                    class="btn btn-primary w-100">Book Now</a>
                                                 {{-- <a href="#" class="btn btn-primary w-100">Book Now</a> --}}
                                             </td>
                                         </tr>
@@ -407,7 +429,7 @@
                 </div>
             </div>
 
-            <div class="blog blog-single-post">
+            {{-- <div class="blog blog-single-post">
                 <div class="card new-comment clearfix">
                     <div class="card-header">
                         <h4 class="card-title">Leave Comment</h4>
@@ -426,7 +448,6 @@
                             <div class="form-group">
                                 <label>Rating <span class="text-danger">*</span></label>
                                 <select name="rating" id="rating" class="custom-select focus-shadow-0">
-                                    {{-- <option value="5" {{$booking->rating==5 ? 'selected':''}}>★★★★★ (5/5)</option> --}}
                                     <option value="5">★★★★★ (5/5)</option>
                                     <option value="4">★★★★☆ (4/5)</option>
                                     <option value="3">★★★☆☆ (3/5)</option>
@@ -444,7 +465,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
         </div>

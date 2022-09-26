@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class EventController extends Controller
 {
@@ -65,8 +66,14 @@ class EventController extends Controller
             return abort(404);
         }
 
+        // single event page view count
+        $event->view_count = $event->view_count + 1;
+
+        $event->save();
+
         return view('event-details',[
             'event' => $event
         ]);
+
     }
 }

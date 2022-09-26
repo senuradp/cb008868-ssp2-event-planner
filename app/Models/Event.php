@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Finance\Booking;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -61,6 +62,13 @@ class Event extends Model implements HasMedia
      */
     public function packages(){
         return $this->hasMany(Package::class);
+    }
+
+    /***
+     * Booking Relationship
+     */
+    public function bookings(){
+        return $this->hasMany(Booking::class);
     }
 
     /**
