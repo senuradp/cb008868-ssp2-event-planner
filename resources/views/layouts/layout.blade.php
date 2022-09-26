@@ -165,7 +165,8 @@
                                 </a>
                                 <ul class="submenu">
                                     <li class=""><a href="{{ route('user.profile.show') }}">My Profile</a></li>
-                                    <li class=""><a href="{{ route('user.booking.my-bookings') }}">My Bookings</a></li>
+                                    <li class=""><a href="{{ route('user.booking.my-bookings') }}">My Bookings</a>
+                                    </li>
                                     <li class=""><a href="{{ route('user.review.my-reviews') }}">My Reviews</a></li>
                                     <li class="">
                                         <a href="{{ route('logout') }}"

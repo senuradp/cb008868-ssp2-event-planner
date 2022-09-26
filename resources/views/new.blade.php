@@ -44,7 +44,7 @@
                     <h2>find the event hallS.</h2>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href="event-details.html" class="view-all">View all</a>
+                    <a href="{{ route('events') }}" class="view-all">View all</a>
                 </div>
             </div>
             <div class="row">
