@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Auth\Administrator;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AdminLoginController extends Controller
@@ -61,6 +62,29 @@ class AdminLoginController extends Controller
         return $this->guard()->attempt(
             $this->credentials($request), $request->boolean('remember')
         );
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function logout(Request $request)
+    {
+
+        $this->guard()->logout();
+
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/admin/login');
     }
 
     /**

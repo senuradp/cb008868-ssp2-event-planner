@@ -7,6 +7,8 @@ Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])
     ->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login'])
     ->name('admin.login');
+Route::post('/admin/logout', [AdminLoginController::class, 'logout'])
+    ->name('admin.logout');
 
 Route::group([
     'prefix' => 'admin',

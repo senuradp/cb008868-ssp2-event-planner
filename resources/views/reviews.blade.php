@@ -70,7 +70,7 @@
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star filled"></i>
                                                     @else
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>

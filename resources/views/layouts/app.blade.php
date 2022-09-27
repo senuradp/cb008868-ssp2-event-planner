@@ -19,6 +19,8 @@
      <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
 
     @stack('styles')
 
@@ -82,7 +84,7 @@
                                         <div class="dropdown-divider"></div>
                                         <small class="d-block ps-2">Bookings</small>
 
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="{{ route('admin.bookings.index') }}">
                                             Bookings & Reservations
                                         </a>
 
@@ -96,7 +98,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        @guest('admin')
                             @if (Route::has('login') || Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -105,24 +107,21 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}"></a>
                                 </li>
                             @endif
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        {{ auth('admin')->user()->name }}
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST">
                                             @csrf
+                                            <button type="submit" class="dropdown-item">
+                                                Logout
+                                            </button>
                                         </form>
                                     </div>
                                 </li>
@@ -164,7 +163,9 @@
                     <li class="nav-item"><a href="{{ route('admin.administrators.index') }}" class="nav-link px-2 text-muted">Admins |</a></li>
                     <li class="nav-item"><a href="{{ route('admin.users.index') }}" class="nav-link px-2 text-muted">Customers |</a></li>
                     <li class="nav-item"><a href="{{ route('admin.categories.index') }}" class="nav-link px-2 text-muted">Categories |</a></li>
-                    <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link px-2 text-muted">Pages</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.pages.index') }}" class="nav-link px-2 text-muted">Pages |</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.events.index') }}" class="nav-link px-2 text-muted">Events |</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.bookings.index') }}" class="nav-link px-2 text-muted">Bookings |</a></li>
                 </ul>
                 <p class="text-center text-muted">© {{ date('Y') }} | Buttercup Events | Senura Perera CB008868 </p>
             </footer>
