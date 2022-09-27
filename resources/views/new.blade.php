@@ -47,7 +47,7 @@
                     <a href="{{ route('events') }}" class="view-all">View all</a>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="service-box">
                         <div class="service-img">
@@ -234,6 +234,90 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
+            <div class="row">
+                @foreach ($events as $event)
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="service-box">
+                            <div class="service-img">
+                                <img src="{{ $event->getFirstMediaUrl('images', 'thumb') }}" alt=""
+                                    class="img-fluid">
+                            </div>
+                            <div class="overlay-content">
+                                <div class="rating">
+                                    @if ($event->bookings)
+                                    {{-- {{  dd($event->bookings) }} --}}
+                                        @foreach (range(0, 4) as $rating)
+                                        <i class="fas fa-star {{  event_rating($event) > $rating ? 'filled' : '' }}"></i>
+                                        @endforeach
+                                        <span class="d-inline-block">{{ event_rating($event) }}</span>
+                                    @endif
+
+                                    {{-- @if ($event->booking->rating == 5)
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                    @elseif ($event->booking->rating == 4)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                    @elseif ($event->booking->rating == 3)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                    @elseif ($event->booking->rating == 2)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star filled"></i>
+                                        <i class="fas fa-star filled"></i>
+                                    @elseif ($event->booking->rating == 1)
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star filled"></i>
+                                    @else
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    @endif --}}
+
+                                </div>
+                                <ul class="available-info">
+                                    <li>
+                                        <a href="event-details.html">
+                                            <h3>{{ $event->name }}</h3>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <p>{{ $event->location }}</p>
+                                    </li>
+                                    <li>
+                                        <h4>{{ $event->bookings ? $event->bookings->count() : 0 }} Bookings</h4>
+                                    </li>
+                                </ul>
+                                <div class="row row-sm">
+                                    <div class="col-6">
+                                        <a href="booking.html" class="btn bok-btn" tabindex="0">Book Now</a>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                        <a href="javascript:void(0);" class="rate cursor-auto" tabindex="0">$
+                                            200.00/HR</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -791,7 +875,7 @@
     </section> --}}
 
     <!--Review Section-->
-    <section class="testimonial-section reviews">
+    {{-- <section class="testimonial-section reviews">
         <div class="container">
             <div class="section-wraper row d-flex align-items-center">
                 <div class="col-md-8 col-lg-6 section-header mb-0">
@@ -943,7 +1027,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!--News Section-->
     {{-- <section class="blog-wrapper">

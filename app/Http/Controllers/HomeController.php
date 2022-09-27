@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ButtercupEvents;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -27,6 +28,19 @@ class HomeController extends Controller
         // dd($buttercupEvents);
         resolve('ButtercupEvents')->setUrl('home');
         // return view('home');
-        return view('new');
+        // return to home view with view_count descending order
+        $events = (new Event())
+                ->newQuery()
+                ->where('status', 1)
+                ->orderBy('view_count', 'desc')
+                ->take(4)
+                ->get();
+
+        // dd($events);
+
+        return view('new',[
+            'events' => $events
+        ]);
     }
+
 }

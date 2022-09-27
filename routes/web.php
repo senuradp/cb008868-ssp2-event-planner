@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Gate;
 |
 */
 
-Route::get('/', function () {
-    return view('new');
-});
+// Route::get('/', function () {
+//     return view('new');
+// });
+
+
 
 Route::get('/dev', function () {
     // dd(Gate::allows('admin'));
@@ -31,10 +33,10 @@ Auth::routes();
 // Route::get('/home', function () {
 //     return view('home');
 // });
-Route::get('/home', function () {
-    return view('new');
-});
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', function () {
+//     return view('new');
+// });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/events', function () {
     return view('events');
