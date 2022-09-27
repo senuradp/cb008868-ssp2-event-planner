@@ -17,7 +17,13 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = (new Booking())
+            ->newQuery()
+            ->paginate(10);
+
+        return view('admin.bookings.index',[
+            'bookings' => $bookings
+        ]);
     }
 
     /**
@@ -49,7 +55,9 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        return view('admin.bookings.show', [
+            'booking' => $booking
+        ]);
     }
 
     /**
