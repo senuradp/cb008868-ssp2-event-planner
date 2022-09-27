@@ -13,7 +13,7 @@ class EventController extends Controller
         $events = (new Event())
             ->newQuery()
             ->where('status', 1)
-            // ->whereDate('date', '=', date('Y-m-d'))
+            ->whereDate('date', '=', date('Y-m-d'))
             ->with([
                 'categories',
                 'media'
@@ -32,9 +32,55 @@ class EventController extends Controller
             ->take(10)
             ->get();
 
+        // get fututre events where the date is greater than today
+        $futureEvents = (new Event())
+            ->where('date', '>', date('Y-m-d'))
+            ->where('status', 1)
+            ->with([
+                'categories',
+                'media'
+            ])
+            ->orderBy('date', 'asc')
+            ->take(10)
+            ->get();
+
 
         // dd($events);
        return view('events', [
+            'events' => $events,
+            'futureEvents' => $futureEvents,
+            'categories' => (new Category())
+                ->newQuery()
+                ->where('status', 1)
+                ->get(),
+        ]);
+    }
+
+    public function future(){
+        $events = (new Event())
+            ->newQuery()
+            ->where('status', 1)
+            ->whereDate('date', '>', date('Y-m-d'))
+            ->with([
+                'categories',
+                'media'
+            ]);
+
+        // check if the request has a cid column and get the hotels by the category id
+
+        if(request()->has('cid')){
+            // create a new query to get the hotels by the category id
+            $events->whereHas('categories', function($query){
+                $query->where('category_id', request()->get('cid'));
+            });
+        }
+
+        $events = $events->orderBy('date', 'asc')
+            ->take(10)
+            ->get();
+
+        // dd($events);
+       return view('future-events', [
             'events' => $events,
             'categories' => (new Category())
                 ->newQuery()

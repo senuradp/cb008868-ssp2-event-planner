@@ -144,13 +144,20 @@
                         <li class="{{ Request::segment(1) == '' ? 'active' : '' }}">
                             <a href="/">Home</a>
                         </li>
-                        <li class="has-submenu {{ Request::segment(2) == 'events' ? 'active' : '' }}">
-                            <a href="{{ route('events') }}">Events</a>
+                        <li class="has-submenu {{ Request::segment(1) == 'events' ? 'active' : '' }}">
+                            <a style="color:white">
+                                Events
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li class=""><a href="{{ route('events') }}">Active Events</a></li>
+                                <li class=""><a href="{{ route('future-events') }}">Future Events</a></li>
+                            </ul>
                         </li>
                         {{-- <li class="has-submenu {{ Request::segment(3) == 'events' ? 'active' : '' }}">
                             <a href="/events">Archived Events</a>
                         </li> --}}
-                        <li class="has-submenu {{ Request::segment(3) == 'events' ? 'active' : '' }}">
+                        <li class="has-submenu">
 
                             @guest
                                 @if (Route::has('login'))

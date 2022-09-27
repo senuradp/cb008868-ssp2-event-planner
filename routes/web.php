@@ -30,18 +30,13 @@ Route::get('/dev', function () {
 
 Auth::routes();
 
-// Route::get('/home', function () {
-//     return view('home');
-// });
-// Route::get('/home', function () {
-//     return view('new');
-// });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/events', function () {
     return view('events');
 });
 Route::get('/events', [App\Http\Controllers\EventController::class, 'home'])->name('events');
+Route::get('/future-events', [App\Http\Controllers\EventController::class, 'future'])->name('future-events');
 Route::get('/event-details/{url}',App\Http\Controllers\EventController::class)->name('events.show');
 
 Route::get('/event-details', function () {

@@ -16,13 +16,13 @@
                                         <h4>Event Categories</h4>
                                     </li>
                                     <li>
-                                        <a href="{{ route('events') }}" class="text-decoration-none">
+                                        <a href="{{ route('future-events') }}" class="text-decoration-none">
                                             <span>All events</span>
                                         </a>
                                     </li>
                                     @foreach ($categories as $category)
                                         <li class="{{ request()->get('cid') == $category->id ? 'bg-primary' : '' }}">
-                                            <a href="{{ route('events') }}?cid={{ $category->id }}"
+                                            <a href="{{ route('future-events') }}?cid={{ $category->id }}"
                                                 class="text-decoration-none">
                                                 <span>{{ $category->title }}</span>
                                             </a>
@@ -41,7 +41,7 @@
                             <nav class="user-tabs mb-4">
                                 <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#pat_appointments" data-toggle="tab">Active
+                                        <a class="nav-link active" href="#pat_appointments" data-toggle="tab">Future
                                             Events</a>
                                     </li>
                                 </ul>
@@ -49,9 +49,11 @@
 
                             <div class="tab-content pt-0">
 
-                                {{-- Active events --}}
+                                {{-- Expired events --}}
+                                {{-- <div class="tab-pane fade inactive-event" id="pat_Programss"> --}}
                                 <div id="pat_appointments" class="tab-pane fade show active">
                                     <div class="row row-grid">
+                                        {{-- display the events where event date > than today --}}
                                         @if ($events && $events->count())
                                             @foreach ($events as $event)
                                                 <div class="col-md-6 col-lg-4">
@@ -120,7 +122,6 @@
                                         @endif
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
