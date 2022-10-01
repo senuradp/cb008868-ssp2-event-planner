@@ -118,16 +118,6 @@
 
                     </div>
 
-
-                    {{-- id and title as key value pairs --}}
-                    <div class="row">
-                        <div class="col-12">
-                            <x-form-select id="category_id" name="category_id" label="Category" type="text"
-                                value="{{ $event->category_id }}" help="Event Category" placeholder="Select Category"
-                                :options="$categories->pluck('title', 'id')" />
-                        </div>
-                    </div>
-
                     <div class="col-12">
                         <div class="row">
                             <div class="col-10">

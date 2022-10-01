@@ -7,28 +7,8 @@
             <div class="banner-wrapper">
                 <div class="wrapper-content text-center">
                     <div class="banner-header">
-                        <h1>Find the best event hall</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consequat mauris </p>
-                    </div>
-                    <div class="search-box">
-                        <form action="https://pathivu-laravel.dreamguystech.com/events/public/search">
-                            <div class="form-search">
-                                <div class="form-inner">
-                                    <div class="form-group search-info">
-                                        <i class="fas fa-expand-arrows-alt bficon"></i>
-                                        <input type="text" class="form-control" placeholder="Search Event Hall">
-                                    </div>
-                                    <div class="form-group search-location">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        <input type="text" class="form-control" placeholder="Location">
-                                        <a class="current-loc-icon" href="javascript:void(0);"><i
-                                                class="fas fa-crosshairs"></i></a>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary search-btn mt-0"><i
-                                            class="fas fa-search"></i> Search</button>
-                                </div>
-                            </div>
-                        </form>
+                        <h1>Buttercup Events</h1>
+                        <p>All Your Favourite Events In One Place</p>
                     </div>
                 </div>
             </div>
@@ -40,8 +20,8 @@
         <div class="container">
             <div class="section-wraper row d-flex align-items-center">
                 <div class="col-md-6 section-header mb-0">
-                    <p>#popular events hall</p>
-                    <h2>find the event hallS.</h2>
+                    <p>#popular events</p>
+                    <h2>find the event.</h2>
                 </div>
                 <div class="col-md-6 text-right">
                     <a href="{{ route('events') }}" class="view-all">View all</a>
@@ -240,8 +220,9 @@
                     <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="service-box">
                             <div class="service-img">
-                                <img src="{{ $event->getFirstMediaUrl('images', 'thumb') }}" alt=""
+                                <img src="{{ $event->image  ?  $event->getFirstMediaUrl('images', 'thumb') : '/assets/img/blog/default.jpg' }}" alt=""
                                     class="img-fluid">
+                                </a>
                             </div>
                             <div class="overlay-content">
                                 <div class="rating">
@@ -252,49 +233,10 @@
                                         @endforeach
                                         <span class="d-inline-block">{{ event_rating($event) }}</span>
                                     @endif
-
-                                    {{-- @if ($event->booking->rating == 5)
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                    @elseif ($event->booking->rating == 4)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                    @elseif ($event->booking->rating == 3)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                    @elseif ($event->booking->rating == 2)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                    @elseif ($event->booking->rating == 1)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star filled"></i>
-                                    @else
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    @endif --}}
-
                                 </div>
                                 <ul class="available-info">
                                     <li>
-                                        <a href="event-details.html">
+                                        <a href="{{ route('events.show', $event->url) }}">
                                             <h3>{{ $event->name }}</h3>
                                         </a>
                                     </li>
@@ -307,11 +249,9 @@
                                 </ul>
                                 <div class="row row-sm">
                                     <div class="col-6">
-                                        <a href="booking.html" class="btn bok-btn" tabindex="0">Book Now</a>
+                                        <a href="{{ route('events.show', $event->url) }}" class="btn bok-btn" tabindex="0">Book Now</a>
                                     </div>
                                     <div class="col-6 text-right">
-                                        <a href="javascript:void(0);" class="rate cursor-auto" tabindex="0">$
-                                            200.00/HR</a>
                                     </div>
                                 </div>
                             </div>

@@ -33,7 +33,7 @@ class HomeController extends Controller
                 ->newQuery()
                 ->where('status', 1)
                 ->orderBy('view_count', 'desc')
-                ->take(4)
+                ->take(6)
                 ->get();
 
         // dd($events);

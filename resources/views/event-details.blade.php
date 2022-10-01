@@ -58,7 +58,7 @@
                             </div>
                             <div class="blog-content">
                                 <img class="img-fluid" alt="{{ $event->name }}"
-                                    src="{{ $event->image  ?  $event->getFirstMediaUrl('images', 'thumb') : '/assets/img/blog/default-full.jpg' }}">
+                                    src="{{ $event->image  ?  $event->getFirstMediaUrl('images') : '/assets/img/blog/default-full.jpg' }}">
                             </div>
                             <br>
                             <h3 class="blog-title">Event Details</h3>
