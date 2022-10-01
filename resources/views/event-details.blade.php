@@ -12,11 +12,12 @@
                     <h1>{{ $event->name }}</h1>
                     <p>{{ Str::limit(strip_tags($event->description), 25, $end = '...') }}</p>
                     <div class="rating">
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star"></i>
+                        @if ($event->bookings)
+                        {{-- {{  dd($event->bookings) }} --}}
+                            @foreach (range(0, 4) as $rating)
+                            <i class="fas fa-star {{  event_rating($event) > $rating ? 'filled' : '' }}"></i>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
@@ -36,18 +37,15 @@
                         </li>
                     </ul>
                     <div class="rating">
-                        <span class="d-inline-block">3.5</span>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star filled"></i>
-                        <i class="fas fa-star mr-2"></i>
+                        <span class="d-inline-block">{{ event_rating($event) }}</span>
+                        @if ($event->bookings)
+                        {{-- {{  dd($event->bookings) }} --}}
+                            @foreach (range(0, 4) as $rating)
+                            <i class="fas fa-star {{  event_rating($event) > $rating ? 'filled' : '' }}"></i>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-                {{-- <div class="col-lg-4 col-md-6 text-right">
-                    <a href="booking.html" class="btn book-btn">Book Now</a>
-                    <a href="javascript:void(0);" class="rate cursor-auto" tabindex="0">$ 450.00/HR</a>
-                </div> --}}
             </div>
 
             <div class="row">
@@ -60,7 +58,7 @@
                             </div>
                             <div class="blog-content">
                                 <img class="img-fluid" alt="{{ $event->name }}"
-                                    src="{{ $event->getFirstMediaUrl('images') }}" class="img-fluid w-25 rounded">
+                                    src="{{ $event->image  ?  $event->getFirstMediaUrl('images', 'thumb') : '/assets/img/blog/default-full.jpg' }}">
                             </div>
                             <br>
                             <h3 class="blog-title">Event Details</h3>
@@ -85,143 +83,6 @@
                                 </div>
                             @endif
                         </div>
-
-
-                        {{-- <div class="card blog-comments clearfix">
-                            <div class="card-header">
-                                <h4 class="card-title">Reviews For Ark Royal Venue</h4>
-                            </div>
-                            <div class="card-body pb-0">
-                                <div class="rating mb-4">
-                                    <span class="bg-success text-white">4.3</span>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star filled"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="d-inline-block average-rating">(14 Rating)</span>
-                                </div>
-                                <ul class="comments-list">
-                                    <li>
-                                        <div class="comment">
-                                            <div class="comment-author">
-                                                <img class="avatar" alt="" src="assets/img/customers/customer4.jpg">
-                                            </div>
-                                            <div class="comment-block">
-                                                <span class="comment-by">
-                                                    <span class="blog-author-name">Mia Lerner</span>
-                                                </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-                                                    euismod odio, gravida pellentesque urna varius vitae, gravida
-                                                    pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit.</p>
-                                                <p class="blog-date">Dec 6, 2020</p>
-                                                <a class="comment-btn" href="#">
-                                                    <i class="fas fa-reply"></i> Reply
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <ul class="comments-list reply">
-                                            <li>
-                                                <div class="comment">
-                                                    <div class="comment-author">
-                                                        <img class="avatar" alt=""
-                                                            src="assets/img/customers/customer5.jpg">
-                                                    </div>
-                                                    <div class="comment-block">
-                                                        <span class="comment-by">
-                                                            <span class="blog-author-name">Secorra Dowling</span>
-                                                        </span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            viverra euismod odio, gravida pellentesque urna varius vitae,
-                                                            gravida pellentesque urna varius vitae.</p>
-                                                        <p class="blog-date">Dec 6, 2020</p>
-                                                        <a class="comment-btn" href="#">
-                                                            <i class="fas fa-reply"></i> Reply
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="comment">
-                                                    <div class="comment-author">
-                                                        <img class="avatar" alt=""
-                                                            src="assets/img/customers/customer3.jpg">
-                                                    </div>
-                                                    <div class="comment-block">
-                                                        <span class="comment-by">
-                                                            <span class="blog-author-name">Axe Gibson</span>
-                                                        </span>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                                                            viverra euismod odio, gravida pellentesque urna varius vitae,
-                                                            gravida pellentesque urna varius vitae.</p>
-                                                        <p class="blog-date">December 7, 2020</p>
-                                                        <a class="comment-btn" href="#">
-                                                            <i class="fas fa-reply"></i> Reply
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="comment">
-                                            <div class="comment-author">
-                                                <img class="avatar" alt="" src="assets/img/customers/customer6.jpg">
-                                            </div>
-                                            <div class="comment-block">
-                                                <span class="comment-by">
-                                                    <span class="blog-author-name">Ellie Kent</span>
-                                                </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                <p class="blog-date">December 11, 2020</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="comment">
-                                            <div class="comment-author">
-                                                <img class="avatar" alt="" src="assets/img/customers/customer7.jpg">
-                                            </div>
-                                            <div class="comment-block">
-                                                <span class="comment-by">
-                                                    <span class="blog-author-name">Branice Grier</span>
-                                                </span>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                <p class="blog-date">December 13, 2020</p>
-                                                <a class="comment-btn" href="#">
-                                                    <i class="fas fa-reply"></i> Reply
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card new-comment clearfix">
-                            <div class="card-header">
-                                <h4 class="card-title">Leave Comment</h4>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label>Name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Your Email AdPartyess <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Comments</label>
-                                        <textarea rows="4" class="form-control"></textarea>
-                                    </div>
-                                    <div class="submit-section">
-                                        <button class="btn btn-primary submit-btn" type="submit">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
 
@@ -387,7 +248,6 @@
                             <hr>
                         </div> --}}
                         @endforeach
-
                     </div>
                 </div>
             </div>
@@ -395,38 +255,59 @@
             <div class="blog blog-single-post">
                 <div class="card blog-comments clearfix">
                     <div class="card-header">
-                        <h4 class="card-title">Reviews For {{ $event->name }}</h4>
+                        <h4 class="">Reviews For {{ $event->name }}</h4>
                     </div>
-                    <div class="card-body pb-0">
-                        <div class="rating mb-4">
-                            <span class="bg-success text-white">4.3</span>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star filled"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="d-inline-block average-rating">(14 Rating)</span>
-                        </div>
-                        <ul class="comments-list">
-                            <li>
-                                <div class="comment">
-                                    {{-- <div class="comment-author">
-                                        <img class="avatar" alt="" src="assets/img/customers/customer7.jpg">
-                                    </div> --}}
-                                    <div class="comment-block">
-                                        <span class="comment-by">
-                                            <span class="blog-author-name">Branice Grier</span>
-                                        </span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        <p class="blog-date">December 13, 2020</p>
-                                        <a class="comment-btn" href="#">
-                                            <i class="fas fa-reply"></i> Reply
-                                        </a>
+                    @foreach ($event->bookings as $review)
+                        <div class="card-body pb-0">
+                            <ul class="comments-list">
+                                <li>
+                                    <div class="comment">
+                                        <div class="comment-author">
+                                            <img class="avatar" alt="" src="/assets/img/avatar.jpeg">
+                                        </div>
+                                        <div class="comment-block">
+                                            <span class="comment-by">
+                                                <span class="blog-author-name">{{ $review->first_name }} {{ $review->last_name }}</span>
+                                            </span>
+                                            @if (event_rating($event) == 5)
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <span class="d-inline-block">{{ event_rating($event) }}/5</span>
+                                            @elseif (event_rating($event) == 4)
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <span class="d-inline-block">{{ event_rating($event) }}/5</span>
+                                            @elseif (event_rating($event) == 3)
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <span class="d-inline-block">{{ event_rating($event) }}/5</span>
+                                            @elseif (event_rating($event) == 2)
+                                                <i class="fas fa-star filled"></i>
+                                                <i class="fas fa-star filled"></i>
+                                                <span class="d-inline-block">{{ event_rating($event) }}/5</span>
+                                            @elseif (event_rating($event) == 1)
+                                                <i class="fas fa-star filled"></i>
+                                                <span class="d-inline-block">{{ event_rating($event) }}/5</span>
+                                            @else
+                                                No ratings yet !
+                                            @endif
+                                            <p>{{ $review->comment }}</p>
+                                            <p class="blog-date">{{ $review->updated_at->format('d M Y') }}</p>
+                                            {{-- <a class="comment-btn" href="#">
+                                                <i class="fas fa-reply"></i> Reply
+                                            </a> --}}
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 

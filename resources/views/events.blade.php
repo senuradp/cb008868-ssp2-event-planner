@@ -59,8 +59,8 @@
                                                         <div class="doc-img">
                                                             <a href="{{ route('events.show', $event->url) }}">
                                                                 <img class="img-fluid" alt="{{ $event->name }}"
-                                                                    src="{{ $event->getFirstMediaUrl('images', 'thumb') }}"
-                                                                    class="img-fluid w-25 rounded">
+                                                                    src="{{ $event->image  ?  $event->getFirstMediaUrl('images', 'thumb') : '/assets/img/blog/default.jpg' }}"
+                                                                    class="img-fluid w-25 rounded" >
                                                             </a>
                                                             {{-- <a href="javascript:void(0)" class="fav-btn" title="Inactive">
                                                                 <i class="far fa-eye-slash"></i>
