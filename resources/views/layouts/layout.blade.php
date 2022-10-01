@@ -319,10 +319,8 @@
                                 <div class="footer-widget footer-menu">
                                     <h2 class="footer-title">Information</h2>
                                     <ul>
-                                        <li><a href="search.html">Search for Speakers</a></li>
-                                        <li><a href="events.html">Events</a></li>
-                                        <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="{{ route('events') }}">Active Events</a></li>
+                                        <li><a href="{{ route('future-events') }}">Future Events</a></li>
                                     </ul>
                                 </div>
 
@@ -332,10 +330,9 @@
                                 <div class="footer-widget footer-menu">
                                     <h2 class="footer-title">Support</h2>
                                     <ul>
-                                        <li><a href="speaker-dashboard.html">Speaker Dashboard</a></li>
-                                        <li><a href="booking.html">Booking</a></li>
-                                        <li><a href="chat.html">Chat</a></li>
-                                        <li><a href="privacy-policy.html">Privacy & Policy</a></li>
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        <li><a href="{{ route('register') }}">Register</a></li>
+                                        <li><a href="{{ route('user.profile.show') }}">My Profile</a></li>
                                     </ul>
                                 </div>
 
@@ -343,7 +340,7 @@
                             <div class="col-lg-3 col-md-6">
 
                                 <div class="footer-widget footer-contact">
-                                    <h2 class="footer-title">Contact Us</h2>
+                                    <h2 class="footer-title">Contact </h2>
                                     <div class="footer-contact-info">
                                         <div class="footer-address">
                                             <span><i class="fas fa-map-marker-alt"></i></span>
@@ -383,7 +380,7 @@
                                 <div class="col-md-7 col-lg-6">
                                     <div class="copyright-text">
                                         <ul class="policy-menu text-left">
-                                            <li><a href="term-condition.html">Terms and Conditions</a></li>
+                                            <li><a href="/terms-and-conditions"></a></li>
                                         </ul>
                                     </div>
                                 </div>
