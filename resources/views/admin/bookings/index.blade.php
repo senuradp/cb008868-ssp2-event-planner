@@ -4,9 +4,9 @@
     <div class="container">
         <div class="row justify-content-center bg-white shadow-lg">
 
-            <div class="col-12 mb-3 mt-3">
+            {{-- <div class="col-12 mb-3 mt-3">
                 <a href="{{ route('admin.bookings.create') }}" class="btn btn-primary"> Add Booking </a>
-            </div>
+            </div> --}}
 
             <div class="col-md-12 bg-white">
 
@@ -43,7 +43,7 @@
                                     <td>
                                         <a href="{{ route('admin.bookings.show', $booking->id) }}"
                                             class="btn btn-success">View</a>
-                                        <a href="{{ route('admin.bookings.edit', $booking->id) }}"
+                                        {{-- <a href="{{ route('admin.bookings.edit', $booking->id) }}"
                                             class="btn btn-primary">Edit</a>
                                         <form id="model-delete-{{ $booking->id }}"
                                             action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST"
@@ -55,7 +55,7 @@
                                                 class="btn btn-danger">
                                                 Delete
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach
