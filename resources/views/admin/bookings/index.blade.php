@@ -13,7 +13,7 @@
                 {{-- show events and bookings details --}}
 
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="bookingsList">
                         <thead>
                             <tr>
                                 <th scope="col">Booking ID</th>
@@ -64,4 +64,15 @@
 
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection
+
+
+@push('scripts')
+    <script>
+        $(document).ready( function () {
+            $('#bookingsList').DataTable();
+        } );
+    </script>
+@endpush
