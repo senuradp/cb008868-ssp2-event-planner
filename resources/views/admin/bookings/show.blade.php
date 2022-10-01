@@ -77,7 +77,7 @@
                 </div>
                 <hr>
                 <div class="col-lg-12 col-md-6 col-sm-12 col-12">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="myTable">
                         <tbody>
                             {{-- rating --}}
                             <tr>
@@ -89,32 +89,27 @@
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
+                                        <span class="d-inline-block">{{ $booking->rating }}/5</span>
                                     @elseif ($booking->rating == 4)
-                                        <i class="fas fa-star"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
+                                        <span class="d-inline-block">{{ $booking->rating }}/5</span>
                                     @elseif ($booking->rating == 3)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
+                                        <span class="d-inline-block">{{ $booking->rating }}/5</span>
                                     @elseif ($booking->rating == 2)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
+                                        <span class="d-inline-block">{{ $booking->rating }}/5</span>
                                     @elseif ($booking->rating == 1)
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
                                         <i class="fas fa-star filled"></i>
+                                        <span class="d-inline-block">{{ $booking->rating }}/5</span>
                                     @else
-                                        Not Rated
+                                        No ratings yet !
                                     @endif
                                 </td>
                             </tr>
